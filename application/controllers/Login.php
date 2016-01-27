@@ -53,7 +53,7 @@ class Login extends CI_Controller {
             $this->load->model('mensagens_model','mensagens');
 
             if ($query->num_rows() > 0) {
- 
+   
                 if ($this->login->isBValidSenha($senha, $query)) {
                     $this->login->gravaDadosNaSessao($usuario, $query);
                     $this->login->gravarSenhaHashBanco($senha, $query);

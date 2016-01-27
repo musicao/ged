@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `cedpv` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `cedpv`;
 -- MySQL dump 10.13  Distrib 5.7.9, for osx10.9 (x86_64)
 --
 -- Host: localhost    Database: cedpv
@@ -39,6 +37,7 @@ CREATE TABLE `ci_sessions` (
 
 LOCK TABLES `ci_sessions` WRITE;
 /*!40000 ALTER TABLE `ci_sessions` DISABLE KEYS */;
+INSERT INTO `ci_sessions` VALUES ('4cb8cbbb6d7dfaaecdd0e722503fac0d85036846','::1',1453908868,'__ci_last_regenerate|i:1453908868;'),('73c1e388b92bd4331ec6a5ff9e1e95e0f7f970f4','::1',1453909271,'__ci_last_regenerate|i:1453908978;'),('f374b8e9dcdba132fcebb1dd4f077f12493e503a','::1',1453909531,'__ci_last_regenerate|i:1453909291;'),('1a9e4c8de0ba1f471f948e9ae6f0b5e268600250','192.168.0.13',1453910164,'__ci_last_regenerate|i:1453909924;'),('495808fbc5ca546f9602bdd5cc7d5534b376cb79','::1',1453910093,'__ci_last_regenerate|i:1453910093;'),('4f320b705413517df94759fa45909269a66ebcb9','::1',1453910320,'__ci_last_regenerate|i:1453910320;'),('4f7e898de7cfadc09e55a78870a1b6b884910701','192.168.0.13',1453910326,'__ci_last_regenerate|i:1453910326;'),('99f15a5714b280c1892bb4cbac8cfc3f9ce59ff2','192.168.0.13',1453910655,'__ci_last_regenerate|i:1453910360;'),('d8f1e7b952974b4b1c589c10efdeddf43def0e99','192.168.0.13',1453910946,'__ci_last_regenerate|i:1453910746;'),('dfe1b6a0264f125d8f1dc04692c6a08b1558b5e7','192.168.0.13',1453916712,'__ci_last_regenerate|i:1453916414;'),('420388b7d4e23d24017b1aa7116a39627ce17070','::1',1453916567,'__ci_last_regenerate|i:1453916567;'),('58d8b79d660c18417b45c131547f243d5203c571','192.168.0.13',1453916586,'__ci_last_regenerate|i:1453916576;'),('ddce9a2291c7378761e0daa9fe8f8537d656097b','192.168.0.13',1453916999,'__ci_last_regenerate|i:1453916715;'),('5fac5836486898f1779fe7211ed75d3eb877206e','192.168.0.13',1453917315,'__ci_last_regenerate|i:1453917020;'),('1942bad7a78e05a267d83bd0be140ed745f97681','::1',1453917090,'__ci_last_regenerate|i:1453917090;'),('6b853edeb882d63b5ba67a7c3be558b37e7e9f40','192.168.0.13',1453917388,'__ci_last_regenerate|i:1453917356;erro|s:19:\"CPF não cadastrado\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"old\";}'),('68096c33c731978b880244c10cea498f06e45e64','192.168.0.13',1453918003,'__ci_last_regenerate|i:1453917734;logado|i:1;usuario|s:11:\"38271951289\";nome|s:13:\"administrador\";cpf|s:11:\"38271951289\";id|s:1:\"1\";tipoUsuario|N;ip|s:12:\"192.168.0.13\";descricao|s:13:\"administrador\";'),('0e7ab4f2ff54a5754b9d42cb59c2895c744fd975','192.168.0.13',1453918320,'__ci_last_regenerate|i:1453918140;logado|i:1;usuario|s:11:\"38271951289\";nome|s:13:\"administrador\";cpf|s:11:\"38271951289\";id|s:1:\"1\";tipoUsuario|N;ip|s:12:\"192.168.0.13\";descricao|s:13:\"administrador\";'),('6e595dfcf6fbb048deb576501975f46b7140f796','::1',1453918583,'__ci_last_regenerate|i:1453918555;'),('ec8ece68321bbf80896eb49a035b800e6dab74cd','192.168.0.13',1453918596,'__ci_last_regenerate|i:1453918564;'),('4b404c7f9302cd859c37dc06df07d88c8418e5e9','192.168.0.13',1453919174,'__ci_last_regenerate|i:1453918927;'),('c35f942a57e2f39323a421aec3ecc399c3def573','192.168.0.13',1453919615,'__ci_last_regenerate|i:1453919317;'),('885adff7d05d36ce382f57dac6f2148bf1329da9','192.168.0.13',1453919346,'__ci_last_regenerate|i:1453919336;'),('d289d4d2785b372ded9eefc651c6ff67c88ac12d','192.168.0.13',1453919902,'__ci_last_regenerate|i:1453919628;'),('b2d8579be69e2113de703431e4962277589af6db','192.168.0.13',1453920144,'__ci_last_regenerate|i:1453919930;'),('3930c37615c29352073174e1c938062603f34d8f','192.168.0.13',1453920572,'__ci_last_regenerate|i:1453920273;'),('e6e319e90c0d123bf9d6581972daaa3f04653ef7','192.168.0.13',1453920929,'__ci_last_regenerate|i:1453920698;'),('7068566a6aef251c3dca3a45add7df08294103da','192.168.0.13',1453921091,'__ci_last_regenerate|i:1453920813;'),('f33fe0298884548bb48d616235ea8658abbf8397','::1',1453921206,'__ci_last_regenerate|i:1453920916;'),('bc9c64500f427848edf96b97c5c2881acdb80509','192.168.0.13',1453921116,'__ci_last_regenerate|i:1453921116;'),('bad3dd853c3fe548464ee883849ecf436fe3780d','::1',1453921300,'__ci_last_regenerate|i:1453921230;'),('88760dee8dc7ceacb38fe063487cdcbb20059d7b','192.168.0.13',1453921349,'__ci_last_regenerate|i:1453921306;erro|s:19:\"CPF não cadastrado\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"old\";}'),('7b8379a9bc93e024c0d5b3111460c9a018c227ce','192.168.0.13',1453924693,'__ci_last_regenerate|i:1453924587;'),('bc3227e4e9450739afc6ff186c5e12b4308440f2','192.168.0.13',1453925220,'__ci_last_regenerate|i:1453924921;'),('a4a3a30645005c3a59e2e2c19f3c8f6cb4a119c1','192.168.0.13',1453925409,'__ci_last_regenerate|i:1453925226;'),('0d3f29af82382048fc165e8e98da9660a13631ed','192.168.0.13',1453925593,'__ci_last_regenerate|i:1453925559;'),('943a8eafec2ff00547f1f8b81d9ddb1fa203cc4a','192.168.0.13',1453926027,'__ci_last_regenerate|i:1453925866;erro|s:19:\"CPF não cadastrado\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"new\";}'),('15af04e7eb24049bc2962e8fb7b3202628924b44','192.168.0.13',1453926980,'__ci_last_regenerate|i:1453926972;erro|s:19:\"CPF não cadastrado\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"new\";}'),('6c6dc0efdb463e9cad39897ad02c00421df7c583','192.168.0.13',1453928177,'__ci_last_regenerate|i:1453928010;erro|s:23:\"CPF ou Senha inválidos\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"old\";}'),('b73f0b6cd6580eb0181043f628b367a22a70369c','192.168.0.13',1453928416,'__ci_last_regenerate|i:1453928375;erro|s:23:\"CPF ou Senha inválidos\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"old\";}'),('51cfb0fdd0b15110d9265366ad6273844493335a','192.168.0.13',1453928671,'__ci_last_regenerate|i:1453928671;erro|s:19:\"CPF não cadastrado\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"old\";}'),('6992cea38df3154fd2968b1e141c66d73bd67ebc','192.168.0.13',1453929264,'__ci_last_regenerate|i:1453929155;logado|i:1;usuario|s:11:\"29659859805\";nome|s:13:\"administrador\";cpf|s:11:\"29659859805\";id|s:1:\"1\";tipoUsuario|N;ip|s:12:\"192.168.0.13\";descricao|s:13:\"administrador\";erro|s:23:\"CPF ou Senha inválidos\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"old\";}'),('20de5962097f5cf1179ffe8fb399cf2f1e6ecb32','192.168.0.13',1453929931,'__ci_last_regenerate|i:1453929931;logado|i:1;usuario|s:11:\"29659859805\";nome|s:13:\"administrador\";cpf|s:11:\"29659859805\";id|s:1:\"1\";tipoUsuario|N;ip|s:12:\"192.168.0.13\";descricao|s:13:\"administrador\";erro|s:19:\"CPF não cadastrado\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"old\";}'),('69aecde13dd78985f076bf71b57156af86da5a21','192.168.0.13',1453935292,'__ci_last_regenerate|i:1453935283;logado|i:1;usuario|s:11:\"29659859805\";nome|s:13:\"administrador\";cpf|s:11:\"29659859805\";id|s:1:\"1\";tipoUsuario|N;ip|s:12:\"192.168.0.13\";descricao|s:13:\"administrador\";erro|s:23:\"CPF ou Senha inválidos\";__ci_vars|a:1:{s:4:\"erro\";s:3:\"old\";}'),('0f36c869d2c9dbd16aa2e721fff3959d45054d10','192.168.0.13',1453935872,'__ci_last_regenerate|i:1453935837;logado|i:1;usuario|s:11:\"29659859805\";nome|s:13:\"administrador\";cpf|s:11:\"29659859805\";id|s:1:\"1\";tipoUsuario|N;ip|s:12:\"192.168.0.13\";descricao|s:13:\"administrador\";');
 /*!40000 ALTER TABLE `ci_sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,8 +401,8 @@ DROP TABLE IF EXISTS `usuario_senhas`;
 CREATE TABLE `usuario_senhas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(11) NOT NULL,
-  `senha` varchar(45) NOT NULL,
-  `hash` varchar(45) NOT NULL,
+  `senha` varchar(150) NOT NULL,
+  `salt` varchar(50) NOT NULL,
   `status` varchar(45) NOT NULL DEFAULT 'A',
   `id_usuario_alteracao` int(11) NOT NULL,
   `data_alteracao` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -421,7 +420,7 @@ CREATE TABLE `usuario_senhas` (
 
 LOCK TABLES `usuario_senhas` WRITE;
 /*!40000 ALTER TABLE `usuario_senhas` DISABLE KEYS */;
-INSERT INTO `usuario_senhas` VALUES (1,1,'1234','jhjhjh','A',1,'2016-01-23 16:18:35'),(2,2,'1234','sdsdmsmds','A',2,'2016-01-23 16:18:35');
+INSERT INTO `usuario_senhas` VALUES (1,1,'c42f1efb147150e25acb6665eea59ead5612b0110d3830551058d505b7e75fbb45c83030f7856aea698bfd62ef0b1b3fa194a2d914dd8d2c2fd938e927a1e465','55f97761eigwwkc08sg804w44c4cwgc','A',1,'2016-01-23 16:18:35'),(2,2,'1234','sdsdmsmds','A',2,'2016-01-23 16:18:35');
 /*!40000 ALTER TABLE `usuario_senhas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -454,7 +453,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,'administrador','38271951289',1,'2016-01-23 02:00:00',NULL,NULL,'A',1),(2,'usuario','55736817101',1,'2016-01-23 16:17:09',NULL,NULL,'A',2);
+INSERT INTO `usuarios` VALUES (1,'administrador','29659859805',1,'2016-01-23 02:00:00',NULL,NULL,'A',1),(2,'usuario','55736817101',1,'2016-01-23 16:17:09',NULL,NULL,'A',2);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -500,4 +499,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-23 20:43:20
+-- Dump completed on 2016-01-27 21:05:45
