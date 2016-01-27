@@ -1,0 +1,40 @@
+body { 
+  background: url(../img/banner.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: Helvetica;
+  -webkit-font-smoothing: antialiased;
+   
+}
+
+
+.header-panel {
+    background-color: #F7DC9E;
+    height: 144px;
+    position: relative;
+    z-index: 3;
+}
+
+.header-panel div {
+    position: relative;
+    height: 100%;
+}
+
+.header-panel h1 {
+    color: #FFF;
+    /*font-size: 20px;*/
+    /*font-weight: 400;*/
+    position: absolute;
+    bottom: 10px;
+    padding-left: 35px;
+}
+
+#login {
+   position:absolute;
+   left:50%;
+   top:50%;
+   margin-left:-120px;
+   margin-top:-45px;
+}
