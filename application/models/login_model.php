@@ -31,22 +31,22 @@ class Login_model extends CI_Model {
 
             $query = $this->db->query("
                                         SELECT 
-                            u.id,
-                            u.nome,
-                            u.cpf,
-                            u.status,
-                            tp.descricao,
-                            us.senha,
-                            us.salt,
-                            us.id AS idSenha
+                            v.id,
+                            v.nome,
+                            v.cpf,
+                            v.status,
+                            tv.descricao,
+                            vs.senha,
+                            vs.salt,
+                            vs.id AS idSenha
                         FROM
-                            usuarios AS u
+                            voluntarios AS v
                                 INNER JOIN
-                            tipos_usuarios AS tp ON u.id_tipo_usuario = tp.id
+                            tipo_voluntarios AS tv ON v.id_tipo_voluntario = tv.id
                                         inner join
-                            usuario_senhas as us on us.id = u.id    
+                            voluntario_senhas as vs on vs.id = v.id    
                         WHERE
-                            u.cpf = '$cpf' AND u.status = 'A' and us.status = 'A'");
+                            v.cpf = '$cpf' AND v.status = 'A' and vs.status = 'A'");
         } catch (Exception $e) {
             $this->session->set_flashdata('erro', 'Erro ao validar login');
             log_message('debug', ' Erro ao validar login ' . $e);
@@ -77,16 +77,16 @@ class Login_model extends CI_Model {
      * sem retorno, apenas grava os dados nome, id, matricula na sessao
      */
 
-    public function gravaDadosNaSessao($usuario, $query) {
+    public function gravaDadosNaSessao($voluntario, $query) {
         try {
             $this->session->set_userdata("logado", 1);
-            $this->session->set_userdata("usuario", $usuario);
+            $this->session->set_userdata("voluntario", $voluntario);
             foreach ($query->result() as $row) {
 
                 $this->session->set_userdata("nome", $row->nome);
                 $this->session->set_userdata("cpf", $row->cpf);
                 $this->session->set_userdata("id", $row->id);
-                $this->session->set_userdata("tipoUsuario", $row->id_tipo_usuario);
+                $this->session->set_userdata("tipoUsuario", $row->id_tipo_voluntario);
                 $this->session->set_userdata("ip", $_SERVER['REMOTE_ADDR']);
                 $this->session->set_userdata("descricao", $row->descricao);
                 
@@ -169,12 +169,12 @@ class Login_model extends CI_Model {
             $dados = array(
                 'senha' => $senhaEncriptada,
                 'salt' => $salt,
-                'id_usuario_alteracao' =>  $this->session->userdata("id")
+                'id_voluntario_alteracao' =>  $this->session->userdata("id")
             );
 
             $this->db->trans_start();
             $this->db->where('id', $id);
-            $this->db->update('usuario_senhas', $dados);
+            $this->db->update('voluntario_senhas', $dados);
             $this->db->trans_complete();
 
             if ($this->db->trans_status() === FALSE) {

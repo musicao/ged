@@ -1,40 +1,103 @@
-body { 
-  background: url(../img/banner.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  font-family: Helvetica;
-  -webkit-font-smoothing: antialiased;
-   
+@font-face {
+    font-family: "OpenSans-Regular";
+    src: url("../fonts/OpenSans-Regular.ttf");
+
+    font-family: "OpenSans-BoldItalic.ttf";
+    src: url("../fonts/OpenSans-BoldItalic.ttf");
+
+}
+
+*  {
+	margin:0;
+	padding:0;
+}
+
+html{
+    position: relative;
+    min-height: 100%;
+    
 }
 
 
-.header-panel {
+body{
+    
+    color: #333333;
+    font-family: 'OpenSans-Regular', sans-serif;
+    font-size: 16px;
+    margin: 0 0 60px; /* altura do seu footer */
+    height:100%;
+
+}
+
+header{
     background-color: #F7DC9E;
-    height: 144px;
+}
+ 
+
+ 
+
+
+.conteudoHeader {
+    
     position: relative;
-    z-index: 3;
+    display: block;
+    height:110px;
+    padding: 10px 0;
+    width: auto;
+    color: #0404B4;
+    font-family: 'OpenSans-BoldItalic', sans-serif;
+    padding-left: 160px;
 }
 
-.header-panel div {
-    position: relative;
-    height: 100%;
+.conteudoHeader h1 {
+    font-weight: bold;
+    font-style: italic;
+    font-size: 35px;
+    margin-bottom: 0;
+
 }
 
-.header-panel h1 {
-    color: #FFF;
-    /*font-size: 20px;*/
-    /*font-weight: 400;*/
+.conteudoHeader p{
+
+    text-transform: uppercase;
+    font-size: 18px;
+    padding: 0;
+}
+
+
+ 
+.principal{
+    position: relative;
+    padding-bottom: 1.7em;
+}
+
+.dadosLogin{
     position: absolute;
-    bottom: 10px;
-    padding-left: 35px;
+    top:0;
+    right: 0;
+    font-size: small;
+    padding-right: 0.5em;
+    text-transform: uppercase;
+    color:#0404B4;
+
 }
 
-#login {
-   position:absolute;
-   left:50%;
-   top:50%;
-   margin-left:-120px;
-   margin-top:-45px;
+.alinharTextoFooter{
+    vertical-align: middle;
+    
+}
+
+
+#container { 
+	min-height:100%;
+	position:relative;
+	width:800px;
+        overflow:hidden;
+}
+
+footer {
+	position:absolute;
+	bottom:0;
+	width:100%;
+        background-color: #F7DC9E;
 }

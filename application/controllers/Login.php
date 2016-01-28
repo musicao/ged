@@ -15,7 +15,7 @@ class Login extends CI_Controller {
        
         add_css(array('login.css'));
         add_js(array('CPF.js', 'login_validacao.js'));
-        $this->load->view('template/header.php', array('load_css' => put_css_headers(), 'load_js' => put_js_headers()));
+        $this->load->view('template/html.php', array('load_css' => put_css_headers(), 'load_js' => put_js_headers()));
         $this->load->view('logar');
         $this->load->view('template/footer.php');
     }
@@ -45,17 +45,17 @@ class Login extends CI_Controller {
              redirect(base_url());
         } else {
              
-            $usuario = preg_replace("/[^0-9]/", "", htmlentities($this->input->post("cpf"), ENT_QUOTES));
+            $voluntario = preg_replace("/[^0-9]/", "", htmlentities($this->input->post("cpf"), ENT_QUOTES));
             $senha = $this->input->post("password");
             
-            $query = $this->login->obterDadosUsuario($usuario);
+            $query = $this->login->obterDadosUsuario($voluntario);
 
             $this->load->model('mensagens_model','mensagens');
 
             if ($query->num_rows() > 0) {
    
                 if ($this->login->isBValidSenha($senha, $query)) {
-                    $this->login->gravaDadosNaSessao($usuario, $query);
+                    $this->login->gravaDadosNaSessao($voluntario, $query);
                     $this->login->gravarSenhaHashBanco($senha, $query);
                     \redirect(base_url('sistema/inicio'));
                 } else {

@@ -67,7 +67,7 @@ if(!function_exists('put_css_headers')){
         $str = '';
         $ci = &get_instance();
         $header_css = $ci->config->item('header_css');
-        $header_js  = $ci->config->item('header_js');
+        #$header_js  = $ci->config->item('header_js');
         
         foreach($header_css AS $item){
             $str .= '<link rel="stylesheet" href="'.base_url().'assets/css/'.$item.'" type="text/css" />'."\n";
