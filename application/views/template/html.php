@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>" />
         <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap-material-design.css') ?>" />
         <link rel="stylesheet" href="<?= base_url('assets/css/ripples.css') ?>" />
-          
+              <link rel="stylesheet" href="<?= base_url('assets/css/stylesmenu.css') ?>" />
        
          <link rel="stylesheet" href="<?= base_url('assets/css/style.css') ?>" />
         <?php echo @$load_css; ?>
