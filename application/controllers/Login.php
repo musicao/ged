@@ -13,8 +13,8 @@ class Login extends CI_Controller {
 
     public function index() {
        
-        add_css(array('login.css'));
-        add_js(array('CPF.js', 'login_validacao.js'));
+        add_css(array('bootstrap-material-design.css', 'ripples.css','login.css'));
+        add_js(array('material.js','ripples.min.js','CPF.js', 'login_validacao.js'));
         $this->load->view('template/html.php', array('load_css' => put_css_headers(), 'load_js' => put_js_headers()));
         $this->load->view('logar');
         $this->load->view('template/footer.php');

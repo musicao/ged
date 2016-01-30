@@ -1,4 +1,4 @@
-@import url('../fonts/OpenSans-BoldItalic.ttf');
+ 
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
@@ -14,7 +14,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding-left: 18px;
+  padding-left: 15px;
 }
 #cssmenu:after,
 #cssmenu > ul:after {
@@ -32,7 +32,7 @@
   width: auto;
   font-family: 'Open Sans', sans-serif;
   line-height: 1;
-  background: #ffffff;
+  background: rgb(220, 220, 220) none repeat scroll 0% 0%;
 }
 #menu-line {
   position: absolute;
@@ -40,6 +40,7 @@
   left: 0;
   height: 3px;
   background: #009ae1;
+  margin-left: 35px;
   -webkit-transition: all 0.25s ease-out;
   -moz-transition: all 0.25s ease-out;
   -ms-transition: all 0.25s ease-out;
@@ -149,6 +150,7 @@
   -ms-transition: color .2s ease;
   -o-transition: color .2s ease;
   transition: color .2s ease;
+  z-index: 999;
 }
 #cssmenu ul ul li:hover > a,
 #cssmenu ul ul li a:hover {

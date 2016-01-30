@@ -35,6 +35,7 @@ class Login_model extends CI_Model {
                             v.nome,
                             v.cpf,
                             v.status,
+                            v.id_tipo_voluntario,
                             tv.descricao,
                             vs.senha,
                             vs.salt,
@@ -86,7 +87,7 @@ class Login_model extends CI_Model {
                 $this->session->set_userdata("nome", $row->nome);
                 $this->session->set_userdata("cpf", $row->cpf);
                 $this->session->set_userdata("id", $row->id);
-                $this->session->set_userdata("tipoUsuario", $row->id_tipo_voluntario);
+                $this->session->set_userdata("tipoVoluntario", $row->id_tipo_voluntario);
                 $this->session->set_userdata("ip", $_SERVER['REMOTE_ADDR']);
                 $this->session->set_userdata("descricao", $row->descricao);
                 

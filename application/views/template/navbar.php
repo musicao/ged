@@ -2,11 +2,11 @@
      
 <div id='cssmenu'  >
 <ul>
-    <li><a href='#'>Início</a></li>
+    <li><a href='<?=base_url('Sistema/inicio');?>'>Início</a></li>
     
     
    <li><a href='#'><span class="glyphicon glyphicon-sort"></span> Retirada</a></li>
-   <li><a href='#'><span class="glyphicon glyphicon-barcode"></span> Produtos</a></li>
+   <li><a href='<?=base_url('Produto/listar');?>'><span class="glyphicon glyphicon-barcode"></span> Produtos</a></li>
    <li><a href='#'><span class="glyphicon glyphicon-globe"></span> Voluntários</a></li>
    <li><a href='#'><span class="glyphicon glyphicon-user"></span> Usuários</a></li>
    <li class='  has-sub'><a href='#'><span class="glyphicon glyphicon-signal"></span> Relatório</a>
