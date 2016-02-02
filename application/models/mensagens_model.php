@@ -6,21 +6,6 @@
  */
 class Mensagens_model extends CI_Model {
 
-    public function __construct() {
-
-        parent::__construct();
-    }
-
-    /*
-     * @param: 
-     * @var : $retorno
-
-     * @return: null
-     * 
-     * logins e mensagens de alerta do sistema
-     *      
-     */
-
     public function defineMesagens($retorno) {
         try {
 
@@ -37,6 +22,23 @@ class Mensagens_model extends CI_Model {
                         $this->session->set_flashdata('logado', 'Necessário realizar novo login');
                         break;
                     }
+                case 4: {
+                        $this->session->set_flashdata('erro', 'Erro ao Cadastrar Produto, tente novamente');
+                        break;
+                    }
+                case 5: {
+                        $this->session->set_flashdata('acerto', 'Produto Cadastrado com sucesso');
+                        break;
+                    }
+                case 6: {
+                        $this->session->set_flashdata('acerto', 'Atualização realizada com sucesso');
+                        break;
+                    }
+                case 7: {
+                        $this->session->set_flashdata('erro', 'Atualização não realizada');
+                        break;
+                    }
+                
 
 
                 default:

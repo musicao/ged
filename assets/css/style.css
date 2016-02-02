@@ -129,3 +129,8 @@ footer {
 .container{
     padding-top: 1%;
 }
+
+.nomeMaiusculoNegrito{
+    text-transform: uppercase;
+    font-weight: bold;
+}

@@ -2,6 +2,16 @@
 
     <div  ng-controller="produtoCtl">
 
+        <?php if ($this->session->flashdata('erro')): ?>
+            <div class="alert alert-danger text-center" role="alert" ><?= $this->session->flashdata('erro'); ?></div>
+            <?php
+        endif;
+        if ($this->session->flashdata('acerto')):
+            ?>
+            <div class="alert alert-success text-center" role="alert" ><?= $this->session->flashdata('acerto'); ?></div>
+        <?php endif; ?>
+            
+            
         <div class="pull-right">
 
             <?php if ($this->session->userdata('tipoVoluntario') == 1) { ?>
@@ -11,6 +21,8 @@
             }
             ?>
         </div>
+
+
 
         <div ng-show="listar">
             <div class="row">
@@ -93,5 +105,8 @@
 
 
     </div><!-- fim controller -->
+    
+      
 
 </div> 
+ 
