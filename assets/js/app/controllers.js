@@ -1,6 +1,6 @@
   (function () {
     "use strict";
-     angular.module('myApp.controllers', [ 'loginController','produtoController']);
+     angular.module('myApp.controllers', [ 'loginController','produtoController', 'voluntarioController','validation']);
 }());
 
 

@@ -14,7 +14,7 @@ class Login extends CI_Controller {
     public function index() {
        
         add_css(array('bootstrap-material-design.css', 'ripples.css','login.css'));
-        add_js(array('material.js','ripples.min.js','CPF.js', 'login_validacao.js'));
+        add_js(array('material.js','ripples.min.js', 'login_validacao.js'));
         $this->load->view('template/html.php', array('load_css' => put_css_headers(), 'load_js' => put_js_headers()));
         $this->load->view('logar');
         $this->load->view('template/footer.php');
@@ -57,7 +57,17 @@ class Login extends CI_Controller {
                 if ($this->login->isBValidSenha($senha, $query)) {
                     $this->login->gravaDadosNaSessao($voluntario, $query);
                     $this->login->gravarSenhaHashBanco($senha, $query);
-                    \redirect(base_url('sistema/inicio'));
+                    
+                    if($senha == "Brasilia604"){ 
+                            //senha default senha padrão
+                            //obriga alterar a senha e realizar novo login
+                            //mudar tb no senha_model
+                        \redirect(base_url('senha/alterar/' . $this->session->userdata('id')));
+                    }else{
+                        \redirect(base_url('sistema/inicio'));
+                    }
+                    
+                    
                 } else {
                     
                     $this->mensagens->defineMesagens(2);

@@ -43,9 +43,9 @@ class Login_model extends CI_Model {
                         FROM
                             voluntarios AS v
                                 INNER JOIN
-                            tipo_voluntarios AS tv ON v.id_tipo_voluntario = tv.id
-                                        inner join
-                            voluntario_senhas as vs on vs.id = v.id    
+                                voluntario_senhas as vs on vs.id_voluntario = v.id  
+                                 inner join
+                            tipo_voluntarios AS tv ON tv.id = v.id_tipo_voluntario 
                         WHERE
                             v.cpf = '$cpf' AND v.status = 'A' and vs.status = 'A'");
         } catch (Exception $e) {

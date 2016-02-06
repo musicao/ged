@@ -41,3 +41,5 @@ $lang['form_validation_in_list'] = 'O campo {field} deve ser um de: {param}.';
 $lang['valid_date'] = "O campo {field} não é uma data (dd/mm/yyyy) válida.";
 $lang['valid_hour'] = "O campo {field} não é uma hora (hh/mm) válida.";
 $lang['validaCPF'] = " Número do CPF inválido";
+$lang['validar_senha'] = "O campo {field} não corresonde a uma senha válida.";
+

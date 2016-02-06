@@ -513,6 +513,7 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 
 
+ 
 
 #$config['header_css'] = array('bootstrap.min.css','bootstrap-material-design.css',
  #                               'ripples.css', 'jquery.dropdown.css', 'style.css');
@@ -523,3 +524,5 @@ $config['header_css'] =array();
 $config['header_js'] = array();
 $config['error_prefix'] = '<div class="error_prefix">';
 $config['error_suffix'] = '</div>';
+
+ 

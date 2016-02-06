@@ -1,27 +1,34 @@
+
 <script src="<?= base_url('assets/js/jquery.js') ?>" type="text/javascript"></script> 
 <script src="<?= base_url('assets/js/bootstrap.min.js') ?>" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/angular.js') ?> " type="text/javascript"></script>
- 
-<script src="<?= base_url('assets/js/jquery.dropdown.js') ?>" type="text/javascript"></script>
- 
+<script src="<?= base_url('assets/js/angular-messages.js') ?> " type="text/javascript"></script>
 
 
+  
 <script src="<?= base_url('assets/js/jquery.inputmask.js') ?>" type="text/javascript"></script>
+ 
 <script src="<?= base_url('assets/js/scriptmenu.js') ?>" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/ui-bootstrap-tpls-0.10.0.min.js') ?>" type="text/javascript"></script>
-<script src="<?= base_url('assets/js/material.js') ?>" type="text/javascript"></script>
+<script src="<?= base_url('assets/js/CPF.js') ?>" type="text/javascript"></script>
 
 
 
-<!-- Meus Scripts-->
-<?php echo @$load_js ?>
-<script src="<?= base_url('assets/js/script.js') ?>" type="text/javascript"></script>
-<script src="<?= base_url('assets/js/app/app.js') ?>" type="text/javascript"></script>
+
 
 <!-- Meus controlles-->
 <script src="<?= base_url('assets/js/app/controllers.js') ?>" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/app/login.js') ?>" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/app/produto.js') ?>" type="text/javascript"></script>
+<script src="<?= base_url('assets/js/app/voluntario.js') ?>" type="text/javascript"></script>
+<script src="<?= base_url('assets/js/app/password.js') ?>" type="text/javascript"></script>
+
+<!-- Meus Scripts-->
+<?php echo @$load_js ?>
+
+<script src="<?= base_url('assets/js/app/app.js') ?>" type="text/javascript"></script>
+<script src="<?= base_url('assets/js/script.js') ?>" type="text/javascript"></script>
+
 
 <footer>
 

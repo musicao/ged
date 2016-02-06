@@ -23,11 +23,11 @@ class Mensagens_model extends CI_Model {
                         break;
                     }
                 case 4: {
-                        $this->session->set_flashdata('erro', 'Erro ao Cadastrar Produto, tente novamente');
+                        $this->session->set_flashdata('erro', 'Erro ao Cadastrar, tente novamente');
                         break;
                     }
                 case 5: {
-                        $this->session->set_flashdata('acerto', 'Produto Cadastrado com sucesso');
+                        $this->session->set_flashdata('acerto', 'Cadastrado com sucesso');
                         break;
                     }
                 case 6: {
@@ -38,7 +38,30 @@ class Mensagens_model extends CI_Model {
                         $this->session->set_flashdata('erro', 'Atualização não realizada');
                         break;
                     }
-                
+                case 8: {
+                        $this->session->set_flashdata('erro', 'CPF já cadastrado');
+                        break;
+                    }
+                case 9: {
+                        $this->session->set_flashdata('erro', 'Ação não permitida');
+                        break;
+                    }
+                case 10: {
+                        $this->session->set_flashdata('acerto', 'Senha altarada. Senha padrão temporária: Brasilia604');
+                        break;
+                    }
+                case 11: {
+                        $this->session->set_flashdata('acerto', 'Senha altarada com sucesso');
+                        break;
+                    }
+                case 12: {
+                        $this->session->set_flashdata('erro', 'Senha não altarada');
+                        break;
+                    }
+                case 13: {
+                        $this->session->set_flashdata('erro', 'Senha não altarada pois não eram iguais');
+                        break;
+                    }
 
 
                 default:
