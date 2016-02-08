@@ -22,7 +22,7 @@ $app->get('/produtos', function() {
     // parent categories node
     $categories = array();
 
-    
+
 
     foreach ($rows["data"] as $row) {
 
@@ -43,34 +43,98 @@ $app->get('/produtos', function() {
     echoResponse(200, $categories);
 });
 
+function Mask($mask, $str) {
+
+    $str = str_replace(" ", "", $str);
+
+    for ($i = 0; $i < strlen($str); $i++) {
+        $mask[strpos($mask, "#")] = $str[$i];
+    }
+
+    return $mask;
+}
+
+
+function Telefone($str){
+    
+    $tam = strlen($str);
+    
+    if($tam == 10){
+       return Mask("(##) ####-####", $str);
+    }else if($tam == 11){
+        return Mask("(##) #####-####", $str);
+    }else{
+        return;
+    }
+}
 
 $app->get('/voluntarios', function() {
     global $db;
     $rows = $db->select("v_voluntarios", "*", array('status' => 'A'), "ORDER BY nome ASC");
     $lista = array();
 
-    function Mask($mask, $str) {
 
-        $str = str_replace(" ", "", $str);
 
-        for ($i = 0; $i < strlen($str); $i++) {
-            $mask[strpos($mask, "#")] = $str[$i];
-        }
-
-        return $mask;
-    }
     foreach ($rows["data"] as $row) {
 
         $voluntario = array(); // temp array
         $voluntario["id"] = $row["id"];
         $voluntario["status"] = $row["status"];
         $voluntario["nome"] = $row["nome"];
-        $voluntario["cpf"] = Mask("###.###.###-##",$row["cpf"]);
+        $voluntario["cpf"] = Mask("###.###.###-##", $row["cpf"]);
         $voluntario["descricao"] = $row["descricao"];
 
 
 
         array_push($lista, $voluntario);
+    }
+
+    echoResponse(200, $lista);
+});
+
+$app->get('/usuarios', function() {
+    global $db;
+    $rows = $db->select("v_usuarios", "*", array('status' => 'A'), "ORDER BY nome ASC");
+    $lista = array();
+
+
+    foreach ($rows["data"] as $row) {
+
+        $usuario = array(); // temp array
+        $usuario["id"] = $row["id"];
+        $usuario["nome"] = $row["nome"];
+        $usuario["telefone"] = Telefone($row["telefone"]);
+        $usuario["cidade"] = $row["cod_cidades"];
+        $usuario["cpf"] = Mask("###.###.###-##", $row["cpf"]);
+        $usuario["idCadastro"] = $row["id_voluntario_cadastro"];
+        $usuario["status"] = $row["status"];
+        $usuario["nomeCidade"] = $row["nomeCidade"];
+        $usuario["sigla"] = $row["sigla"];
+        $usuario["nomeEstado"] = $row["nomeEstado"];
+
+
+
+
+        array_push($lista, $usuario);
+    }
+
+    echoResponse(200, $lista);
+});
+
+
+$app->get('/cidades', function() {
+
+    global $db;
+    $rows = $db->select("cidades", " cod_cidades AS id, nome ", array('estados_cod_estados' => $_GET['estado']), "ORDER BY nome ASC");
+    $lista = array();
+
+    foreach ($rows["data"] as $row) {
+
+        $cidade = array(); // temp array
+        $cidade["id"] = $row["id"];
+        $cidade["nome"] = $row["nome"];
+
+        array_push($lista, $cidade);
     }
 
     echoResponse(200, $lista);

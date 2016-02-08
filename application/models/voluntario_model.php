@@ -73,7 +73,7 @@ class Voluntario_model extends CI_Model {
             $this->senha->incluiSenha($id);
             $this->db->trans_complete();
             if ($this->db->trans_status() === FALSE) {
-                log_message('debug', "Erro ao cadastrar produto $nome");
+                log_message('debug', "Erro ao cadastrar voluntario $nome");
                 return 4;
             }
 
@@ -110,7 +110,7 @@ class Voluntario_model extends CI_Model {
             return $retorno;
         } catch (Exception $e) {
             $this->session->set_flashdata('erro', 'Erro ao Excluir produto');
-            log_message('debug', ' Erro ao excluir produto ' . $e);
+            log_message('debug', ' Erro ao excluir voluntario ' . $e);
             redirect('produto/listar');
         }
     }
@@ -144,7 +144,7 @@ class Voluntario_model extends CI_Model {
             $this->db->update('voluntarios', $dados);
             $this->db->trans_complete();
             if ($this->db->trans_status() === FALSE) {
-                log_message('debug', "Erro ao cadastrar produto $nome");
+                log_message('debug', "Erro ao editar voluntario $nome");
                 return 4;
             }
 

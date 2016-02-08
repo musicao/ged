@@ -22,6 +22,7 @@
 <script src="<?= base_url('assets/js/app/produto.js') ?>" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/app/voluntario.js') ?>" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/app/password.js') ?>" type="text/javascript"></script>
+<script src="<?= base_url('assets/js/app/usuario.js') ?>" type="text/javascript"></script>
 
 <!-- Meus Scripts-->
 <?php echo @$load_js ?>

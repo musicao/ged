@@ -2,7 +2,7 @@
     <form role="form" method="POST" action="<?= base_url('voluntario/editar/' . $voluntario->id) ?>">
         <fieldset>
 
-            <legend>Altualizar dados do(a) Voluntário(a) - <span class="nomeMaiusculoNegrito"><?= $voluntario->nome ?></span></legend>
+            <legend>Atualizar dados do(a) Voluntário(a) - <span class="nomeMaiusculoNegrito"><?= $voluntario->nome ?></span></legend>
 
             <?php if ($this->session->flashdata('erro')): ?>
                 <div class="alert alert-danger text-center" role="alert" ><?= $this->session->flashdata('erro'); ?></div>

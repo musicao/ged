@@ -4,38 +4,23 @@ if (!defined('BASEPATH')) {
     exit('No direct script access allowed');
 }
 
-class Voluntario extends CI_Controller {
+class Usuario extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-         
+
         $this->load->model('login_model', 'login');
         $this->login->logged();
-        $this->load->model('voluntario_model', 'voluntario');
-        $this->load->model('perfil_model', 'perfil');
+        $this->load->model('usuario_model', 'usuario');
     }
 
     public function listar() {
-        
-      
 
         $this->load->view('template/html.php');
         $this->load->view('template/header.php');
         $this->load->view('template/navbar.php');
         $this->load->view('template/principal.php');
-        $perfis = $this->perfil->listarPerfis();
-        $this->load->view('voluntarios/listar.php', array('perfis'=>$perfis));
-        $this->load->view('template/footer.php');
-    }
-
-    public function inserir() {
-
-        $this->load->view('template/html.php');
-        $this->load->view('template/header.php');
-        $this->load->view('template/navbar.php');
-        $this->load->view('template/principal.php');
-        $perfis = $this->perfil->listarPerfis();
-        $this->load->view('voluntarios/inserir.php',array('perfis'=>$perfis));
+        $this->load->view('usuarios/listar.php');
         $this->load->view('template/footer.php');
     }
 
@@ -53,10 +38,15 @@ class Voluntario extends CI_Controller {
                 'rules' => 'required|validaCPF'
             ),
             array(
-                'field' => 'selPefil',
-                'label' => 'Perfil',
-                'rules' => 'required'
-            ) 
+                'field' => 'selEstado',
+                'label' => 'Estado',
+                'rules' => 'required|estado'
+            ),
+            array(
+                'field' => 'selCidade',
+                'label' => 'Cidade',
+                'rules' => 'required|cidade'
+            )
         );
 
 
@@ -64,28 +54,38 @@ class Voluntario extends CI_Controller {
         $this->form_validation->set_error_delimiters('<div><p class="text-danger">', '</p></div>');
 
         if ($this->form_validation->run() == FALSE) {
+
             $this->load->view('template/html.php');
             $this->load->view('template/header.php');
             $this->load->view('template/navbar.php');
             $this->load->view('template/principal.php');
-            $perfis = $this->perfil->listarPerfis();
-            $this->load->view('voluntarios/inserir.php',array('perfis'=>$perfis));
+
+
+            $estadoSubmetido = preg_replace("/[^0-9]/", "", htmlentities(filter_input(INPUT_POST, 'selEstado', FILTER_SANITIZE_SPECIAL_CHARS), ENT_QUOTES));
+ 
+            $idEstado = (isset($estadoSubmetido) && $estadoSubmetido > 0)? $estadoSubmetido : 1;
+
+            $estados = $this->usuario->listarEstados();
+            
+            $cidades = $this->usuario->listarcidades($idEstado, FALSE);
+
+            $this->load->view('usuarios/inserir.php', array('cidades' => $cidades, 'estados' => $estados));
             $this->load->view('template/footer.php');
         } else {
 
             $nome = $this->input->post('nome');
             $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
-            $selPefil = $this->input->post('selPefil');
-            $retorno = $this->voluntario->inserir($nome, $cpf, $selPefil);
+            $selCidade = $this->input->post('selCidade');
+            $telefone = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('telefone'), ENT_QUOTES));
+            $retorno = $this->usuario->inserir($nome, $cpf, $selCidade,$telefone);
             $this->load->model('mensagens_model', 'mensagens');
             $this->mensagens->defineMesagens($retorno);
 
-            redirect('voluntario/listar');
+            redirect('usuario/listar');
         }
     }
 
-    
-      public function editar($id) {
+    public function editar($id) {
 
         $config = array(
             array(
@@ -96,13 +96,18 @@ class Voluntario extends CI_Controller {
             array(
                 'field' => 'cpf',
                 'label' => 'cpf',
-                'rules' => 'trim|required'
+                'rules' => 'required|validaCPF'
             ),
             array(
-                'field' => 'selPefil',
-                'label' => 'Perfil',
-                'rules' => 'trim|required'
-            ) 
+                'field' => 'selEstado',
+                'label' => 'Estado',
+                'rules' => 'required|estado'
+            ),
+            array(
+                'field' => 'selCidade',
+                'label' => 'Cidade',
+                'rules' => 'required|cidade'
+            )
         );
 
 
@@ -114,28 +119,30 @@ class Voluntario extends CI_Controller {
             $this->load->view('template/header.php');
             $this->load->view('template/navbar.php');
             $this->load->view('template/principal.php');
-            $query = $this->voluntario->buscarVoluntarioPorId($id);
-            $perfis = $this->perfil->listarPerfis();
+            $query = $this->usuario->buscarUsuarioPorId($id);
+            $usuario= $query->row();
             
-            $this->load->view('voluntarios/editar.php',array("voluntario" =>$query->row(), 'perfis'=>$perfis));
+            
+            $estados = $this->usuario->listarEstados();
+            $cidades = $this->usuario->listarcidades($usuario->idEstados, FALSE);
+
+            $this->load->view('usuarios/editar.php', array('usuario'=>$query->row(),  'cidades' => $cidades, 'estados' => $estados));
             $this->load->view('template/footer.php');
         } else {
 
-            
+
             $nome = $this->input->post('nome');
             $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
-            $selPefil = $this->input->post('selPefil');
-            $retorno = $this->voluntario->atualizar($nome, $cpf, $selPefil,$id);
-
-            
-
+            $selCidade = $this->input->post('selCidade');
+            $telefone = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('telefone'), ENT_QUOTES));
+            $retorno = $this->usuario->atualizar($nome, $cpf, $selCidade,$telefone,$id);
             $this->load->model('mensagens_model', 'mensagens');
-            $this->mensagens->defineMesagens($retorno);
-
-            redirect('voluntario/listar');
+            $this->mensagens->defineMesagens($retorno); 
+            
+            redirect('usuario/listar');
         }
     }
-    
+
     public function deletar() {
 
         try {
@@ -147,9 +154,9 @@ class Voluntario extends CI_Controller {
                         ), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
                 die;
             }
-            
-            $valor = json_decode($this->input->post('voluntario'));
-            $retorno = $this->voluntario->desativarVoluntario($valor->id);
+
+            $valor = json_decode($this->input->post('usuario'));
+            $retorno = $this->usuario->desativarUsuario($valor->id);
 
 
             if ($retorno) {
@@ -170,7 +177,13 @@ class Voluntario extends CI_Controller {
             die;
         }
     }
-    
-    
+
+    public function listcity() {
+
+        $idEstado = $this->input->post("estado");
+        $respostaAjax = $this->input->post("respostaAjax");
+
+        return $this->usuario->listarCidades($idEstado, $respostaAjax);
+    }
 
 }

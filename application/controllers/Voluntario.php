@@ -23,8 +23,8 @@ class Voluntario extends CI_Controller {
         $this->load->view('template/header.php');
         $this->load->view('template/navbar.php');
         $this->load->view('template/principal.php');
-        $perfis = $this->perfil->listarPerfis();
-        $this->load->view('voluntarios/listar.php', array('perfis'=>$perfis));
+        #$perfis = $this->perfil->listarPerfis();
+        $this->load->view('voluntarios/listar.php');
         $this->load->view('template/footer.php');
     }
 

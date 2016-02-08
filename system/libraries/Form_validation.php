@@ -1422,11 +1422,24 @@ class CI_Form_validation {
     }
 
     function validar_senha($str) {
-        
+
         if (preg_match("/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/", $str)) {
             return TRUE;
-        }  
-        
+        }
+
+        return FALSE;
+    }
+
+    function estado($str) {
+        if($this->integer($str)){
+            return TRUE;
+        }
+        return FALSE;
+    }
+    function cidade($str) {
+        if($this->integer($str)){
+            return TRUE;
+        }
         return FALSE;
     }
 

@@ -18,18 +18,18 @@
                     </div>
                 </div>
             </div>
-                <div class="row">
+            <div class="row">
                 <div class="form-group">
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
                         <label for = "cpf">CPF</label>
                         <input id="cpf" name ="cpf"   class = "form-control" required type = "text" value = "<?= set_value('cpf') ?>">
                         <?= form_error('cpf'); ?>
-                          
+
                     </div>
 
                 </div>  
-                
-                
+
+
             </div>
             <div class="row">
                 <div class="form-group">

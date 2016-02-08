@@ -160,7 +160,15 @@ footer {
   color: red;
 }
 
-
+#load{
+    background-image: url('../img/ajax-loader.gif');
+    display: none;
+    text-indent: 40px;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    width: 128px;
+    height: 128px;
+}
 
 
  

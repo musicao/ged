@@ -23,7 +23,7 @@
         </div>
 
 
-
+  <h2> Relação de Produtos </h2>  <br>
         <div ng-show="listar">
             <div class="row">
                 <div class="col-md-2">Exibir:

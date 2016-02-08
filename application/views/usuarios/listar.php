@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div  ng-controller="voluntarioCtl">
+    <div  ng-controller="usuarioCtl">
 
         <?php if ($this->session->flashdata('erro')): ?>
             <div class="alert alert-danger text-center" role="alert" ><?= $this->session->flashdata('erro'); ?></div>
@@ -13,16 +13,10 @@
 
 
         <div class="pull-right">
-
-            <?php if ($this->session->userdata('tipoVoluntario') == 1) { ?>
-                <a href="<?= base_url('voluntario/inserir'); ?>" class="btn btn-primary botaoNovoTelaUsuario"> <span class="glyphicon glyphicon-plus"></span> NOVO</a>
-
-                <?php
-            }
-            ?>
+            <a href="<?= base_url('usuario/cadastrar'); ?>" class="btn btn-primary botaoNovoTelaUsuario"> <span class="glyphicon glyphicon-plus"></span> NOVO</a>
         </div>
 
-  <h2> Relação de Voluntários </h2>  <br>
+            <h2> Relação de Usuários </h2>  <br>
 
         <div ng-show="listar">
             <div class="row">
@@ -39,10 +33,10 @@
                     <input type="text"  ng-model="search" ng-change="filter()" placeholder="Filtrar" class="form-control" />
                 </div>
                 <div class="col-md-4" ng-show="!search">
-                    <h5> {{ totalItems}} voluntários(s) cadastrado(s) </h5>
+                    <h5> {{ totalItems}} usuário(s) cadastrado(s) </h5>
                 </div>
                 <div class="col-md-4" ng-show="search">
-                    <h5>Filtrados {{ filtered.length}} de {{ totalItems}} voluntário(s)</h5>
+                    <h5>Filtrados {{ filtered.length}} de {{ totalItems}} usuário(s)</h5>
                 </div>
             </div>
 
@@ -60,33 +54,36 @@
                             <tr>
                                 <th>Nome <a ng-click="sort_by('nome');"> <i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th class="hidden-xs"> CPF<a ng-click="sort_by('cpf');"> <i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th class="hidden-xs"> Perfil<a ng-click="sort_by('descricao');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                <th class="hidden-xs"> Telefone<a ng-click="sort_by('telefone');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                <th class="hidden-xs"> Cidade<a ng-click="sort_by('nomeCidade');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                <th class="hidden-xs"> Estado<a ng-click="sort_by('sigla');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+
                                 <th>Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="voluntario in filtered = (list| filter:search | orderBy : predicate :reverse) | startFrom:(currentPage - 1) * entryLimit | limitTo:entryLimit" >
+                            <tr ng-repeat="usuario in filtered = (list| filter:search | orderBy : predicate :reverse) | startFrom:(currentPage - 1) * entryLimit | limitTo:entryLimit" >
 
                                 <td><a class="tooltipUsuario" 
-                                       href="<?= base_url('voluntario/editar') ?>/{{voluntario.id}}"
+                                       href="<?= base_url('usuario/editar') ?>/{{usuario.id}}"
                                        data-toggle="tooltip" 
                                        data-placement="top" 
-                                       data-original-title="{{voluntario.nome}}">
-                                        {{voluntario.nome.toUpperCase()}}
+                                       data-original-title="{{usurio.nome}}">
+                                        {{usuario.nome.toUpperCase()}}
                                     </a>
                                 </td>
 
 
-                                <td class="hidden-xs">{{voluntario.cpf}}</td>
-                                <td class="hidden-xs">{{voluntario.descricao.toUpperCase()}}</td>
+                                <td class="hidden-xs">{{usuario.cpf}}</td>
+                                <td class="hidden-xs">{{usuario.telefone}}</td>
+                                <td class="hidden-xs">{{usuario.nomeCidade.toUpperCase()}}</td>
+                                <td class="hidden-xs">{{usuario.sigla.toUpperCase()}}</td>
 
                                 <td>
-                                    <a href="<?= base_url('voluntario/editar') ?>/{{voluntario.id}}" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><img class="imagemIcons" src="<?= base_url('assets/img/document_edit.png') ?>"</a>
-                                    <a href="<?= base_url('senha/alterar') ?>/{{voluntario.id}}" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Alterar senha "><img class="imagemIcons" src="<?= base_url('assets/img/key.png') ?>"</a>
+                                    <a href="<?= base_url('usuario/editar') ?>/{{usuario.id}}" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><img class="imagemIcons" src="<?= base_url('assets/img/document_edit.png') ?>"</a>
 
                                     <?php if ($this->session->userdata('tipoVoluntario') == 1) { ?>
-                                        <a href="#" ng-click="reinicializarSenha(voluntario)" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Ressetar"><img class="imagemIcons" src="<?= base_url('assets/img/user_password.png') ?>"</a>
-                                        <a href="#" ng-click="deletarVoluntario(voluntario)" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Excluir"><img class="imagemIcons" src="<?= base_url('assets/img/recyclebin.png') ?>"</a>
+                                        <a href="#" ng-click="deletarUsuario(usuario)" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Excluir"><img class="imagemIcons" src="<?= base_url('assets/img/recyclebin.png') ?>"</a>
 
                                         <?php
                                     }
@@ -99,7 +96,7 @@
                 </div>
                 <div class="col-md-12" ng-show="filteredItems == 0">
                     <div class="col-md-12">
-                        <h4>Nenhum voluntário encontrado</h4>
+                        <h4>Nenhum usuário encontrado</h4>
                     </div>
                 </div>
                 <div class="col-md-12" ng-show="filteredItems > 0">    
