@@ -54,16 +54,15 @@ function Mask($mask, $str) {
     return $mask;
 }
 
+function Telefone($str) {
 
-function Telefone($str){
-    
     $tam = strlen($str);
-    
-    if($tam == 10){
-       return Mask("(##) ####-####", $str);
-    }else if($tam == 11){
+
+    if ($tam == 10) {
+        return Mask("(##) ####-####", $str);
+    } else if ($tam == 11) {
         return Mask("(##) #####-####", $str);
-    }else{
+    } else {
         return;
     }
 }
@@ -135,6 +134,29 @@ $app->get('/cidades', function() {
         $cidade["nome"] = $row["nome"];
 
         array_push($lista, $cidade);
+    }
+
+    echoResponse(200, $lista);
+});
+
+$app->get('/estoque', function() {
+
+    global $db;
+    $rows = $db->select("v_estoque", " * ", array(), "ORDER BY nome ASC");
+    $lista = array();
+
+    foreach ($rows["data"] as $row) {
+
+        $estoque = array(); // temp array
+        $estoque["id"] = $row["id"];
+        $estoque["nome"] = $row["nome"];
+        $estoque["qtde"] = $row["qtde"];
+        $estoque["minimo"] = $row["minimo"];
+        $estoque["maximo"] = $row["maximo"];
+
+
+
+        array_push($lista, $estoque);
     }
 
     echoResponse(200, $lista);

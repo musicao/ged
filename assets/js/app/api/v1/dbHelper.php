@@ -24,7 +24,8 @@ class dbHelper {
                 $w .= " and " .$key. " like :".$key;
                 $a[":".$key] = $value;
             }
-            $stmt = $this->db->prepare("select ".$columns." from ".$table." where 1=1 ". $w." ".$order);
+            
+             $stmt = $this->db->prepare("select ".$columns." from ".$table." where 1=1 ". $w." ".$order);
             $stmt->execute($a);
             $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if(count($rows)<=0){

@@ -5,32 +5,33 @@
  *
  * @author Israel Eduardo Zebulon Martins de Souza 02/2016
  */
-class Produto_model extends CI_Model {
+class Estoque_model extends CI_Model {
 
     public function __construct() {
         try {
             parent::__construct();
         } catch (Exception $e) {
             $this->session->set_flashdata('erro', 'Erro acessar base de dados');
-            log_message('debug', ' Erro ao cadastrar produto ' . $e);
+            log_message('debug', ' Erro ao instanciar estoque ' . $e);
             redirect(base_url());
         }
     }
 
-    public function inserir($nome, $minimo, $maximo, $obs) {
+    public function inserir($idProduto,$quantidade,$obs) {
+       
         $dados = array(
-            "nome" => $nome,
-            "estoque_minimo" => $minimo,
-            "estoque_maximo" => $maximo,
-            "descricao" => $obs,
+            "id_produto" => $idProduto,
+            "qtde" => $quantidade,
+            "id_ci_sessions" => $this->session->session_id,
+            "observacao" => $obs,
             "id_voluntario_cadastro" => $this->session->userdata('id')
         );
 
         $this->db->trans_start();
-        $this->db->insert('produto', $dados);
+        $this->db->insert('entrada_produto', $dados);
         $this->db->trans_complete();
         if ($this->db->trans_status() === FALSE) {
-            log_message('debug', "Erro ao cadastrar produto $nome");
+            log_message('debug', "Erro ao cadastrar entrada_produtos $idProduto");
             return 4;
         }
 
@@ -48,7 +49,7 @@ class Produto_model extends CI_Model {
 
             $this->db->trans_start();
             $this->db->where('id', $id);
-            $this->db->update('produto', $dados);
+            $this->db->update('produtos', $dados);
             $retorno = $this->db->affected_rows();
             $this->db->trans_complete();
 
@@ -64,12 +65,12 @@ class Produto_model extends CI_Model {
     }
 
     public function listagem() {
-        return $this->db->query("SELECT * FROM  produto where status = 'A' order by nome ASC");
+        return $this->db->query("SELECT * FROM  produtos where status = 'A' order by nome ASC");
     }
 
     public function buscarProdutoPorId($id) {
         return $this->db->query("SELECT id,status, nome, estoque_minimo as minimo, "
-                        . "estoque_maximo as maximo, descricao as obs FROM  produto where id=$id");
+                        . "estoque_maximo as maximo, descricao as obs FROM  produtos where id=$id");
     }
 
     public function atualizar($nome, $minimo, $maximo, $obs, $id) {
@@ -86,7 +87,7 @@ class Produto_model extends CI_Model {
         } else {
             $this->db->trans_start();
             $this->db->where('id', $id);
-            $this->db->update('produto', $dados);
+            $this->db->update('produtos', $dados);
 
             $this->db->trans_complete();
             if ($this->db->trans_status() === FALSE) {

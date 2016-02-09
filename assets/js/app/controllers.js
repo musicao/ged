@@ -4,7 +4,8 @@
          'produtoController', 
          'voluntarioController',
          'validation',
-        'usuarioController']);
+        'usuarioController',
+      'estoqueController']);
 }());
 
 

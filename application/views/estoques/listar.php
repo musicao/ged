@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div  ng-controller="produtoCtl">
+    <div  ng-controller="estoqueCtl">
 
         <?php if ($this->session->flashdata('erro')): ?>
             <div class="alert alert-danger text-center" role="alert" ><?= $this->session->flashdata('erro'); ?></div>
@@ -15,7 +15,7 @@
         <div class="pull-right">
 
             <?php if ($this->session->userdata('tipoVoluntario') == 1) { ?>
-                <a href="<?= base_url('produto/inserir'); ?>" class="btn btn-primary botaoNovoTelaUsuario"> <span class="glyphicon glyphicon-plus"></span> NOVO</a>
+                <a href="<?= base_url('estoque/adicionar'); ?>" class="btn btn-primary botaoNovoTelaUsuario"> <span class="glyphicon glyphicon-plus"></span> Adicionar</a>
 
                 <?php
             }
@@ -23,7 +23,7 @@
         </div>
 
 
-  <h2> Relação de Produtos </h2>  <br>
+  <h2> Estoque </h2>  <br>
         <div ng-show="listar">
             <div class="row">
                 <div class="col-md-2">Exibir:
@@ -39,7 +39,7 @@
                     <input type="text"  ng-model="search" ng-change="filter()" placeholder="Filtrar" class="form-control" />
                 </div>
                 <div class="col-md-4" ng-show="!search">
-                    <h5> {{ totalItems}} produtos(s) cadastrado(s) </h5>
+                    <h5> {{ totalItems}} produtos(s) em estoque </h5>
                 </div>
                 <div class="col-md-4" ng-show="search">
                     <h5>Filtrados {{ filtered.length}} de {{ totalItems}} produto(s)</h5>
@@ -59,40 +59,37 @@
                         <thead>
                             <tr>
                                 <th>Nome <a ng-click="sort_by('nome');"> <i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th class="hidden-xs"> Descricao<a ng-click="sort_by('descricao');"> <i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th class="hidden-xs"> Estoque Mínimo<a ng-click="sort_by('minimo');"> <i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th class="hidden-xs"> Estoque Máximo<a ng-click="sort_by('maximo');"> <i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th>Ações</th>
+                                <th class="hidden-xs"> Qtde Atual<a ng-click="sort_by('qtde');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                <th class="hidden-xs"> Qtde Mínima<a ng-click="sort_by('minimo');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                <th class="hidden-xs"> Qtde Máxima<a ng-click="sort_by('maximo');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="produto in filtered = (list| filter:search | orderBy : predicate :reverse) | startFrom:(currentPage - 1) * entryLimit | limitTo:entryLimit" >
+                            <tr ng-repeat="estoque in filtered = (list| filter:search | orderBy : predicate :reverse) | startFrom:(currentPage - 1) * entryLimit | limitTo:entryLimit" >
 
                                 <td><a class="tooltipUsuario" 
-                                       href="<?= base_url('produto/editar') ?>/{{produto.id}}"
+                                       href="<?= base_url('estoque/adicionar') ?>"
                                        data-toggle="tooltip" 
                                        data-placement="top" 
-                                       data-original-title="{{produto.nome}}">
-                                        {{produto.nome.toUpperCase()}}
+                                       data-original-title="{{estoque.nome}}">
+                                        {{estoque.nome.toUpperCase()}}
                                     </a>
                                 </td>
 
 
-                                <td class="hidden-xs">{{produto.descricao}}</td>
-                                <td class="hidden-xs">{{produto.minimo}}</td>
-                                <td class="hidden-xs">{{produto.maximo}}</td>
+                                <td class="hidden-xs">{{estoque.qtde}}</td>
+                                <td class="hidden-xs">{{estoque.minimo}}</td>
+                                <td class="hidden-xs">{{estoque.maximo}}</td>
 
-                                <td>
-                                    <a href="<?= base_url('produto/editar') ?>/{{produto.id}}" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><img class="imagemIcons" src="<?= base_url('assets/img/document_edit.png') ?>"</a>
-                                    <a href="#" ng-click="deletarProduto(produto)" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Excluir"><img class="imagemIcons" src="<?= base_url('assets/img/recyclebin.png') ?>"</a>
-                                </td>
+                                
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="col-md-12" ng-show="filteredItems == 0">
                     <div class="col-md-12">
-                        <h4>Nenhum produto encontrado</h4>
+                        <h4>Nenhum produto encontrado em estoque</h4>
                     </div>
                 </div>
                 <div class="col-md-12" ng-show="filteredItems > 0">    
