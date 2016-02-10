@@ -11,10 +11,11 @@ class Estoque extends CI_Controller {
         $this->load->model('login_model', 'login');
         $this->login->logged();
         $this->load->model('estoque_model', 'estoque');
+         $this->load->model('mensagens_model', 'mensagens');
     }
 
     public function listar() {
- 
+
         $this->load->view('template/html.php');
         $this->load->view('template/header.php');
         $this->load->view('template/navbar.php');
@@ -23,7 +24,6 @@ class Estoque extends CI_Controller {
         $this->load->view('template/footer.php');
     }
 
-    
     public function adicionar() {
 
         $config = array(
@@ -36,7 +36,7 @@ class Estoque extends CI_Controller {
                 'field' => 'quantidade',
                 'label' => 'Quantidade',
                 'rules' => 'trim|required|greater_than[0]'
-            ) 
+            )
         );
 
 
@@ -51,14 +51,14 @@ class Estoque extends CI_Controller {
             $this->load->model('produto_model', 'produtos');
             $produtos = $this->produtos->listagem();
 
-            $this->load->view('estoques/inserir.php', array('produtos'=>$produtos));
+            $this->load->view('estoques/inserir.php', array('produtos' => $produtos));
             $this->load->view('template/footer.php');
         } else {
 
             $idProduto = $this->input->post('selProduto');
             $quantidade = $this->input->post('quantidade');
-            $obs =  $this->input->post('obs');
-            $retorno = $this->estoque->inserir($idProduto,$quantidade,$obs);
+            $obs = $this->input->post('obs');
+            $retorno = $this->estoque->inserir($idProduto, $quantidade, $obs);
 
             $this->load->model('mensagens_model', 'mensagens');
             $this->mensagens->defineMesagens($retorno);
@@ -67,28 +67,23 @@ class Estoque extends CI_Controller {
         }
     }
 
-    public function editar($id) {
+    public function retirada() {
 
         $config = array(
             array(
-                'field' => 'nomeProduto',
+                'field' => 'selProduto',
                 'label' => 'Nome do Produto',
-                'rules' => 'trim|required|min_length[5]'
+                'rules' => 'trim|required'
             ),
             array(
-                'field' => 'minimo',
-                'label' => 'Quantidade mínima',
-                'rules' => 'trim|required|integer'
+                'field' => 'quantidadeR',
+                'label' => 'Quantidade',
+                'rules' => 'trim|required|greater_than[0]'
             ),
             array(
-                'field' => 'maximo',
-                'label' => 'Quantidade máxima',
-                'rules' => 'trim|required|integer'
-            ),
-            array(
-                'field' => 'obs',
-                'label' => 'Observações',
-                'rules' => 'encode_php_tags'
+                'field' => 'cpfRetirada',
+                'label' => 'CPF do Usuário',
+                'rules' => 'required|validaCPF'
             )
         );
 
@@ -101,70 +96,48 @@ class Estoque extends CI_Controller {
             $this->load->view('template/header.php');
             $this->load->view('template/navbar.php');
             $this->load->view('template/principal.php');
-            $query = $this->produto->buscarProdutoPorId($id);
+            $this->load->model('produto_model', 'produtos');
+            $produtos = $this->produtos->listagemDisponiveis();
 
-            $this->load->view('produtos/editar.php', array("produto" => $query->row()));
+            $this->load->view('estoques/retirada.php', array('produtos' => $produtos));
             $this->load->view('template/footer.php');
         } else {
 
-            $nome = $this->input->post('nomeProduto');
-            $minimo = $this->input->post('minimo');
-            $maximo = $this->input->post('maximo');
-            $obs = htmlentities($this->input->post('obs'), ENT_QUOTES);
+            $idProduto = $this->input->post('selProduto');
+            $quantidade = $this->input->post('quantidadeR');
+            $obs = $this->input->post('obs');
+            $idUsuario = $this->input->post('identUsuario');
 
-
-            $retorno = $this->produto->atualizar($nome, $minimo, $maximo, $obs, $id);
-
-
-
-            $this->load->model('mensagens_model', 'mensagens');
-            $this->mensagens->defineMesagens($retorno);
-
-            redirect('produto/listar');
-        }
-    }
-
-    public function deletar() {
-
-        try {
-
-            if (!$this->session->userdata('tipoVoluntario') == 1) {
-                echo json_encode(array(
-                    'error' => true,
-                    'message' => "Ação não autorizada"
-                        ), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
-                die;
-            }
-
-            $valor = json_decode($this->input->post('produto'));
-            $retorno = $this->produto->desativarProduto($valor->id);
-
-
-            if ($retorno) {
-                echo json_encode(array(
-                    'error' => false,
-                    'id' => $valor->id
-                        ), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
-
-                die;
+            $this->load->model('produto_model', 'produto');
+            $quantidadeDisponivel = $this->estoque->checaQuantidadeProdutoDisponivel($idProduto);
+           
+            if ($quantidade > $quantidadeDisponivel) {
+                $retorno = 14;
+                $this->mensagens->defineMesagens($retorno);
+                redirect('sistema/inicio');
             } else {
-                throw new Exception("Erro ao deletar");
+                $retorno = $this->estoque->inserirRetirada($idProduto, $quantidade, $obs, $idUsuario);
+                $this->load->view('template/html.php');
+                $this->load->view('template/header.php');
+                $this->load->view('template/navbar.php');
+                $this->load->view('template/principal.php');
+                
+                $this->load->model('produto_model', 'produto');
+                $this->load->model('usuario_model', 'usuario');
+                
+                $nomeProduto = $this->produto->obterNome($idProduto);
+                $nomeUsuario = $this->usuario->obterNome($idUsuario);
+                
+                $this->mensagens->defineMesagens(15);
+                $this->load->view('estoques/comprovante.php',
+                        array("nomeUsuario" => $nomeUsuario,
+                              "nomeProduto" => $nomeProduto,
+                              "quantidade" => $quantidade,
+                                "obs" => $obs)
+                        );
+                $this->load->view('template/footer.php');
             }
-        } catch (Exception $exc) {
-            echo json_encode(array(
-                'error' => true,
-                'message' => $exc->getMessage()
-                    ), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
-            die;
         }
-    }
-
-    public function relacionar() {
-
-
-        $query = $this->produto->listagem();
-
-        return json_encode($query->result());
     }
 
 }

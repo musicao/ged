@@ -8,19 +8,19 @@
 }
 
 *  {
-	margin:0;
-	padding:0;
+    margin:0;
+    padding:0;
 }
 
 html{
     position: relative;
     min-height: 100%;
-    
+
 }
 
 
 body{
-    
+
     color: #333333;
     font-family: 'OpenSans-Regular', sans-serif;
     font-size: 16px;
@@ -32,17 +32,17 @@ body{
 header{
     background-color: #F7DC9E;
 }
- 
+
 header img{
     max-width:100px; 
     margin-top: -14px;
 }
 
- 
+
 
 
 .conteudoHeader {
-    
+
     position: relative;
     display: block;
     height:105px;
@@ -68,7 +68,7 @@ header img{
     padding: 0;
 }
 
- 
+
 
 .dadosLogin{
     position: absolute;
@@ -84,25 +84,25 @@ header img{
 
 .alinharTextoFooter{
     vertical-align: middle;
-    
+
 }
 
 
 #container { 
-	min-height:100%;
-	position:relative;
-	width:800px;
-        overflow:hidden;
+    min-height:100%;
+    position:relative;
+    width:800px;
+    overflow:hidden;
 }
 
 footer {
-	position:absolute;
-	bottom:0;
-	width:100%;
-        background-color: #F7DC9E;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background-color: #F7DC9E;
 }
- #divBusca{
-     
+#divBusca{
+
     border:solid 1px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -114,7 +114,7 @@ footer {
     margin-top: 8px;
     margin-left: 100px;
 }
- 
+
 #txtBusca{
     float:left;
     background-color:transparent;
@@ -125,7 +125,7 @@ footer {
     height:33px;
     width:260px;
 }
- 
+
 .container{
     padding-top: 1%;
 }
@@ -136,11 +136,11 @@ footer {
 }
 
 .imagemIcons{
-     -webkit-font-smoothing:antialiased;
+    -webkit-font-smoothing:antialiased;
     -moz-osx-font-smoothing:grayscale;
     width: 25px;
     height: 25px;
-      
+
 }
 
 .ng-invalid {
@@ -154,10 +154,10 @@ footer {
 }
 
 .messages {
-  font-size: smaller;
-  padding-top: 5px;
-  padding-bottom: 10px;
-  color: red;
+    font-size: smaller;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    color: red;
 }
 
 #load{
@@ -170,5 +170,12 @@ footer {
     height: 128px;
 }
 
-
- 
+.informacoes{
+    padding-top: 1px;
+    padding-bottom: 15px;
+    margin-bottom: 0px;
+    color: inherit;
+    background-color: #eee;
+    padding-left: 29px;
+     
+}

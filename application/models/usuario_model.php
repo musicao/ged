@@ -142,6 +142,12 @@ class Usuario_model extends CI_Model {
         return $this->db->query("select cod_estados as id, sigla
  from estados  order by sigla ASC");
     }
+    
+    public function obterNome($id) {
+        $query =  $this->db->query("SELECT nome FROM  usuarios where id = $id");
+        $row = $query->row();
+        return $row->nome;
+    }
 
     public function listarCidades($id, $respostaAjax) {
 
@@ -174,7 +180,7 @@ class Usuario_model extends CI_Model {
                 echo json_encode([
                     'erro' => false,
                     'data' => $data
-                ]);die;
+                ]);
             } else {
                 return $cidades;
             }
@@ -185,4 +191,7 @@ class Usuario_model extends CI_Model {
         }
     }
 
+    public function burcarIdPorCpf($cpf) {
+        return $this->db->query("SELECT nome,id  FROM  v_usuarios where cpf='$cpf' limit 1");
+    }
 }

@@ -62,7 +62,14 @@ class Mensagens_model extends CI_Model {
                         $this->session->set_flashdata('erro', 'Senha não altarada pois não eram iguais');
                         break;
                     }
-
+                case 14: {
+                        $this->session->set_flashdata('erro', 'Retirada não efetuada. Quantidade solicitada é maior do que existe em estoque');
+                        break;
+                    }
+case 15: {
+                        $this->session->set_flashdata('acerto', 'Retirada efetuada com sucesso');
+                        break;
+                    }
 
                 default:
                     $this->session->set_flashdata('erro', 'Ação não realizada - contatar suporte');

@@ -185,5 +185,31 @@ class Usuario extends CI_Controller {
 
         return $this->usuario->listarCidades($idEstado, $respostaAjax);
     }
+    
+    
 
+    public function buscaUsuarioPorCpf() {
+        $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
+         $query = $this->usuario->burcarIdPorCpf($cpf);
+        
+        if($query){
+            
+             $data = array();
+                 
+                foreach ($query->result() as $row) {
+                    $usuario = array("id" => $row->id, "nome" => $row->nome);
+                    array_push($data, $usuario);
+                }
+            
+            
+            echo json_encode([
+                    'erro' => false,
+                    'data' => $data
+                ]);die;
+        }
+        
+        return $query;
+         
+    }
+    
 }

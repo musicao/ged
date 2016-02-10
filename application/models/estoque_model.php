@@ -100,5 +100,36 @@ class Estoque_model extends CI_Model {
 
         return 6;
     }
+    
+    public function inserirRetirada($idProduto,$quantidade,$obs,$idUsuario) {
+        
+        
+        
+        $dados = array(
+            "id_produto" => $idProduto,
+            "qtde" => $quantidade,
+            "id_usuario" => $idUsuario,
+            "id_ci_sessions" => $this->session->session_id,
+            "observacao" => $obs,
+            "id_voluntario_cadastro" => $this->session->userdata('id')
+        );
+
+        $this->db->trans_start();
+        $this->db->insert('saida_produto', $dados);
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === FALSE) {
+            log_message('debug', "Erro ao cadastrar entrada_produtos $idProduto");
+            return 4;
+        }
+
+        return 5;
+    
+    }
+    
+    public function checaQuantidadeProdutoDisponivel($id) {
+         $query = $this->db->query("SELECT qtde FROM  estoque where id_produto = $id");
+         $row = $query->row();
+         return $row->qtde;
+    }
 
 }

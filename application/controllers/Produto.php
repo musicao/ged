@@ -187,6 +187,7 @@ class Produto extends CI_Controller {
     }
     
     
+    
     public function relacionar() {
         
         

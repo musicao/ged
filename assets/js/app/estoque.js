@@ -25,20 +25,20 @@
         '$http',
         '$timeout',
         function ($scope, $http, $timeout) {
-          
- 
+
+
             var serviceBase = window.location.origin + '/ged/assets/js/app/api/v1';
             $http.get(serviceBase + '/estoque').then(function (results) {
                 $scope.list = results.data;
                 $scope.filteredItems = $scope.list.length; //Initially for no filter  
-            $scope.totalItems = $scope.list.length;
-                
+                $scope.totalItems = $scope.list.length;
+
             });
 
-           
+
             $scope.currentPage = 1; //current page
             $scope.entryLimit = 20; //max no of items to display in a page
-            
+
 
             $scope.listar = true;
 
@@ -59,7 +59,10 @@
 
                 $scope.listar = false;
             };
+
+
            
+
         }]
 
 

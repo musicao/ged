@@ -120,6 +120,53 @@ $app->get('/usuarios', function() {
     echoResponse(200, $lista);
 });
 
+$app->get('/usuariocpf', function() {
+    global $db;
+    $rows = $db->select("v_usuarios", "*", array('cpf' =>$_GET['cpf']), "ORDER BY nome ASC");
+    $lista = array();
+
+
+    foreach ($rows["data"] as $row) {
+
+        $usuario = array(); // temp array
+        $usuario["id"] = $row["id"];
+        $usuario["nome"] = $row["nome"];
+        $usuario["telefone"] = Telefone($row["telefone"]);
+        $usuario["cidade"] = $row["cod_cidades"];
+        $usuario["cpf"] = Mask("###.###.###-##", $row["cpf"]);
+        $usuario["idCadastro"] = $row["id_voluntario_cadastro"];
+        $usuario["status"] = $row["status"];
+        $usuario["nomeCidade"] = $row["nomeCidade"];
+        $usuario["sigla"] = $row["sigla"];
+        $usuario["nomeEstado"] = $row["nomeEstado"];
+
+
+
+
+        array_push($lista, $usuario);
+    }
+
+    echoResponse(200, $lista);
+});
+
+$app->get('/quantidade', function() {
+    global $db;
+    $rows = $db->select("estoque", "qtde", array('id_produto' =>$_GET['id']), "");
+    $lista = array();
+
+
+    foreach ($rows["data"] as $row) {
+
+        $produto = array(); // temp array
+        $produto["qtde"] = $row["qtde"];
+      
+        array_push($lista, $produto);
+    }
+
+    echoResponse(200, $lista);
+});
+
+
 
 $app->get('/cidades', function() {
 
@@ -138,6 +185,10 @@ $app->get('/cidades', function() {
 
     echoResponse(200, $lista);
 });
+ 
+
+
+
 
 $app->get('/estoque', function() {
 
