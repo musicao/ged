@@ -14,7 +14,7 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  padding-left: 4px;
+  padding-right: 20px;
   
 }
 #cssmenu:after,
@@ -41,7 +41,7 @@
   left: 0;
   height: 3px;
   background: #009ae1;
-  margin-left: 10px;
+   margin-left: 220px;
   -webkit-transition: all 0.25s ease-out;
   -moz-transition: all 0.25s ease-out;
   -ms-transition: all 0.25s ease-out;

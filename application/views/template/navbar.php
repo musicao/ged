@@ -1,7 +1,7 @@
  
 
-<div id='cssmenu'  >
-    <ul>
+<div id='cssmenu'   >
+    <ul class="pull-right">
         <li><a href='<?= base_url('Sistema/inicio'); ?>'>Início</a></li>
 
 
@@ -35,17 +35,10 @@
                  </li>
               </ul>
            </li>-->
-        <li> <div id="divBusca">
-                <form> 
-                    <input type="text" id="txtBusca" placeholder="Nome ou CPF"/>
-                    <button type="submit"> 
-                        <img src="<?= base_url('assets/img/search3.png'); ?>" id="btnBusca" alt="Buscar"/>
-                    </button>
-                </form>
-            </div>
+        
         <li></li>
         <li></li>
-        <li><a href="<?= base_url('login/logout') ?>"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
+        <li class="pull-right"><a href="<?= base_url('login/logout') ?>"><span class="glyphicon glyphicon-off"></span> Sair</a></li>
 
     </ul>
 
