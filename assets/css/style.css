@@ -179,3 +179,10 @@ footer {
     padding-left: 29px;
      
 }
+
+.botoesHistoricoUsuario{
+    float: right;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}

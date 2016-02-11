@@ -194,4 +194,8 @@ class Usuario_model extends CI_Model {
     public function burcarIdPorCpf($cpf) {
         return $this->db->query("SELECT nome,id  FROM  v_usuarios where cpf='$cpf' limit 1");
     }
+    
+    public function historico($id) {
+         return $this->db->query("SELECT * FROM  saida_produto where id_usuario='$id' ORDER BY data_saida DESC");
+    }
 }

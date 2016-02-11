@@ -158,4 +158,10 @@ class Voluntario_model extends CI_Model {
         return $this->session->userdata('tipoVoluntario') == 1;
     }
 
+    
+    public function obterNome($id) {
+        $query =  $this->db->query("SELECT nome FROM  voluntarios where id = $id");
+        $row = $query->row();
+        return $row->nome;
+    }
 }

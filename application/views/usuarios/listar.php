@@ -16,7 +16,7 @@
             <a href="<?= base_url('usuario/cadastrar'); ?>" class="btn btn-primary botaoNovoTelaUsuario"> <span class="glyphicon glyphicon-plus"></span> NOVO</a>
         </div>
 
-            <h2> Relação de Usuários </h2>  <br>
+        <h2> Relação de Usuários </h2>  <br>
 
         <div ng-show="listar">
             <div class="row">
@@ -81,6 +81,7 @@
 
                                 <td>
                                     <a href="<?= base_url('usuario/editar') ?>/{{usuario.id}}" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><img class="imagemIcons" src="<?= base_url('assets/img/document_edit.png') ?>"</a>
+                                    <a href="<?= base_url('usuario/historico') ?>/{{usuario.id}}" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Histórico" target="_blank"><img class="imagemIcons" src="<?= base_url('assets/img/mi_scare_report.png') ?>"</a>
 
                                     <?php if ($this->session->userdata('tipoVoluntario') == 1) { ?>
                                         <a href="#" ng-click="deletarUsuario(usuario)" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Excluir"><img class="imagemIcons" src="<?= base_url('assets/img/recyclebin.png') ?>"</a>

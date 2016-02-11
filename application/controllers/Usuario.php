@@ -62,11 +62,11 @@ class Usuario extends CI_Controller {
 
 
             $estadoSubmetido = preg_replace("/[^0-9]/", "", htmlentities(filter_input(INPUT_POST, 'selEstado', FILTER_SANITIZE_SPECIAL_CHARS), ENT_QUOTES));
- 
-            $idEstado = (isset($estadoSubmetido) && $estadoSubmetido > 0)? $estadoSubmetido : 1;
+
+            $idEstado = (isset($estadoSubmetido) && $estadoSubmetido > 0) ? $estadoSubmetido : 1;
 
             $estados = $this->usuario->listarEstados();
-            
+
             $cidades = $this->usuario->listarcidades($idEstado, FALSE);
 
             $this->load->view('usuarios/inserir.php', array('cidades' => $cidades, 'estados' => $estados));
@@ -77,7 +77,7 @@ class Usuario extends CI_Controller {
             $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
             $selCidade = $this->input->post('selCidade');
             $telefone = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('telefone'), ENT_QUOTES));
-            $retorno = $this->usuario->inserir($nome, $cpf, $selCidade,$telefone);
+            $retorno = $this->usuario->inserir($nome, $cpf, $selCidade, $telefone);
             $this->load->model('mensagens_model', 'mensagens');
             $this->mensagens->defineMesagens($retorno);
 
@@ -120,13 +120,13 @@ class Usuario extends CI_Controller {
             $this->load->view('template/navbar.php');
             $this->load->view('template/principal.php');
             $query = $this->usuario->buscarUsuarioPorId($id);
-            $usuario= $query->row();
-            
-            
+            $usuario = $query->row();
+
+
             $estados = $this->usuario->listarEstados();
             $cidades = $this->usuario->listarcidades($usuario->idEstados, FALSE);
 
-            $this->load->view('usuarios/editar.php', array('usuario'=>$query->row(),  'cidades' => $cidades, 'estados' => $estados));
+            $this->load->view('usuarios/editar.php', array('usuario' => $query->row(), 'cidades' => $cidades, 'estados' => $estados));
             $this->load->view('template/footer.php');
         } else {
 
@@ -135,10 +135,10 @@ class Usuario extends CI_Controller {
             $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
             $selCidade = $this->input->post('selCidade');
             $telefone = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('telefone'), ENT_QUOTES));
-            $retorno = $this->usuario->atualizar($nome, $cpf, $selCidade,$telefone,$id);
+            $retorno = $this->usuario->atualizar($nome, $cpf, $selCidade, $telefone, $id);
             $this->load->model('mensagens_model', 'mensagens');
-            $this->mensagens->defineMesagens($retorno); 
-            
+            $this->mensagens->defineMesagens($retorno);
+
             redirect('usuario/listar');
         }
     }
@@ -185,31 +185,67 @@ class Usuario extends CI_Controller {
 
         return $this->usuario->listarCidades($idEstado, $respostaAjax);
     }
-    
-    
+
+    public function historico($id) {
+
+        $query = $this->usuario->historico($id);
+        $dados = $this->formataDadosHistorico($query);
+
+        $row = $query->row();
+        $this->load->model('usuario_model', 'usuario');
+        $nomeUsuario = $this->usuario->obterNome($id);
+        
+        $this->load->view('template/html.php');
+        $this->load->view('template/header.php');
+        $this->load->view('template/navbar.php');
+        $this->load->view('template/principal.php');
+        $this->load->view('usuarios/historico.php',array("nomeUsuario" => $nomeUsuario, "historico" => $dados));
+        $this->load->view('template/footer.php');
+    }
+
+    public function formataDadosHistorico($query) {
+        $this->load->model('produto_model', 'produto');
+        $this->load->model('voluntario_model', 'voluntario');
+
+        $dados = array();
+        foreach ($query->result() as $row) {
+            
+            $data = new DateTime($row->data_saida);
+            array_push($dados, array(
+                "nomeProduto" => strtoupper($this->produto->obterNome($row->id_produto)),
+                "quantidade" => $row->qtde,
+                "obs" => $row->observacao,
+                "nomeVoluntario" => strtoupper($this->voluntario->obterNome($row->id_voluntario_cadastro)),
+                "data" => $data->format("d/m/Y")
+                    )
+            );
+        }
+        
+        return $dados;
+    }
 
     public function buscaUsuarioPorCpf() {
         $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
-         $query = $this->usuario->burcarIdPorCpf($cpf);
-        
-        if($query){
-            
-             $data = array();
-                 
-                foreach ($query->result() as $row) {
-                    $usuario = array("id" => $row->id, "nome" => $row->nome);
-                    array_push($data, $usuario);
-                }
-            
-            
+        $query = $this->usuario->burcarIdPorCpf($cpf);
+
+        if ($query) {
+
+            $data = array();
+
+            foreach ($query->result() as $row) {
+                $usuario = array("id" => $row->id, "nome" => $row->nome);
+                array_push($data, $usuario);
+            }
+
+
             echo json_encode([
-                    'erro' => false,
-                    'data' => $data
-                ]);die;
+                'erro' => false,
+                'data' => $data
+            ]);
+            die;
         }
-        
+
         return $query;
-         
     }
-    
+
 }
