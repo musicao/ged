@@ -1,7 +1,19 @@
 
 $(document).ready(function () {
     $('#cpf, #cpfRetirada').inputmask("999.999.999-99");
+    $(function () {
+        $('#peridoInicial,#peridoFinal').inputmask("99/99/9999");
+    });
+    $(function () {
+        $('.datas').datetimepicker({
+            pickTime: false
+        });
+    });
 
+    $('#peridoInicial,#peridoFinal').on('changeDate', function (ev) {
+        $(this).datepicker('hide');
+    });
+    
     $('#telefone').inputmask('(99) 9999[9]-9999');
 
     $("body").tooltip({selector: '[data-toggle=tooltip]'});
@@ -92,10 +104,6 @@ $(document).ready(function () {
 
     });
 
-
-
-
-
     $(function () {
         $('#quantidadeR').on('blur', function () {
             var num = $('#selProduto').val();
@@ -152,10 +160,6 @@ $(document).ready(function () {
     doc.text(40, 20, 'GED - Gestão de Estoque e Distribuição');
     doc.text(80, 35, 'Comprovante');
 
-
-
-
-
     $('#btGerarPDF').click(function () {
         doc.fromHTML($('#dadosImpressao').html(), 40, 40, {
             'width': 200,
@@ -163,53 +167,141 @@ $(document).ready(function () {
         });
         doc.output('dataurlnewwindow');
     });
-    
-     $('#btGerarPDFHistorico').click(function () {
-         
-          var pdf = new jsPDF('landscape', 'pt', 'A4');
-            pdf.addImage(imgData, 'JPEG', 30, 30, 60, 60);
-            pdf.text(120, 50, 'GED - Gestão de Estoque e Distribuição');
-            pdf.text(150, 70, 'Histórico de Retirada de Produtos');
-            pdf.text(150, 90,   $('#nome').html().toUpperCase()  );
 
-            // source can be HTML-formatted string, or a reference
-            // to an actual DOM element from which the text will be scraped.
-            source = $('#dadosImpressaoHistorico')[0];
+    $('#btGerarPDFHistorico').click(function () {
 
-            // we support special element handlers. Register them with jQuery-style 
-            // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
-            // There is no support for any other type of selectors 
-            // (class, of compound) at this time.
-            specialElementHandlers = {
-                // element with id of "bypass" - jQuery style selector
-                '#bypassme': function (element, renderer) {
-                    // true = "handled elsewhere, bypass text extraction"
-                    return true
-                }
-            };
-            margins = {
-                top: 130,
-                bottom: 60,
-                left: 40,
-                width: 522
-            };
-            // all coords and widths are in jsPDF instance's declared units
-            // 'inches' in this case
-            pdf.fromHTML(
-                    source, // HTML string or DOM elem ref.
-                    margins.left, // x coord
-                    margins.top, {// y coord
-                        'width': margins.width, // max width of content on PDF
-                        'elementHandlers': specialElementHandlers
-                    },
-            function (dispose) {
-                // dispose: object with X, Y of the last line add to the PDF 
-                //          this allow the insertion of new lines after html
-                pdf.save('historico.pdf');
-            }, margins);
-     });
+        var pdf = new jsPDF('portrait', 'pt', 'A4');
+        pdf.addImage(imgData, 'JPEG', 30, 30, 60, 60);
+        pdf.text(120, 50, 'GED - Gestão de Estoque e Distribuição');
+        pdf.text(150, 70, 'Histórico de Retirada de Produtos');
+        pdf.text(150, 90, $('#nome').html().toUpperCase());
 
-    
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        source = $('#dadosImpressaoHistorico')[0];
+
+        // we support special element handlers. Register them with jQuery-style 
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors 
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 130,
+            bottom: 60,
+            left: 40,
+            width: 600
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.fromHTML(
+                source, // HTML string or DOM elem ref.
+                margins.left, // x coord
+                margins.top, {// y coord
+                    'width': margins.width, // max width of content on PDF
+                    'elementHandlers': specialElementHandlers
+                },
+        function (dispose) {
+            // dispose: object with X, Y of the last line add to the PDF 
+            //          this allow the insertion of new lines after html
+            pdf.save('historico.pdf');
+        }, margins);
+    });
+
+
+    $('#btGerarPDFEstoque').click(function () {
+
+        var pdf = new jsPDF('portrait', 'pt', 'A4');
+        pdf.addImage(imgData, 'JPEG', 30, 30, 60, 60);
+        pdf.text(120, 50, 'GED - Gestão de Estoque e Distribuição');
+        pdf.text(150, 70, 'Estoque de Produtos');
+
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        source = $('#dadosImpressaoEstoque')[0];
+
+        // we support special element handlers. Register them with jQuery-style 
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors 
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 130,
+            bottom: 60,
+            left: 40,
+            width: 666
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.fromHTML(
+                source, // HTML string or DOM elem ref.
+                margins.left, // x coord
+                margins.top, {// y coord
+                    'width': margins.width, // max width of content on PDF
+                    'elementHandlers': specialElementHandlers
+                },
+        function (dispose) {
+            // dispose: object with X, Y of the last line add to the PDF 
+            //          this allow the insertion of new lines after html
+            pdf.save('estoque.pdf');
+        }, margins);
+    });
+
+    $('#btGerarPDFRetiradas').click(function () {
+
+        var pdf = new jsPDF('landscape', 'pt', 'A4');
+        pdf.addImage(imgData, 'JPEG', 30, 30, 60, 60);
+        pdf.text(120, 50, 'GED - Gestão de Estoque e Distribuição');
+        pdf.text(150, 70, 'Histórico de Retirada de Produtos');
+
+        // source can be HTML-formatted string, or a reference
+        // to an actual DOM element from which the text will be scraped.
+        source = $('#dadosImpressaoHistoricoRetiradas')[0];
+
+        // we support special element handlers. Register them with jQuery-style 
+        // ID selector for either ID or node name. ("#iAmID", "div", "span" etc.)
+        // There is no support for any other type of selectors 
+        // (class, of compound) at this time.
+        specialElementHandlers = {
+            // element with id of "bypass" - jQuery style selector
+            '#bypassme': function (element, renderer) {
+                // true = "handled elsewhere, bypass text extraction"
+                return true
+            }
+        };
+        margins = {
+            top: 120,
+            bottom: 60,
+            left: 40,
+            width: 800
+        };
+        // all coords and widths are in jsPDF instance's declared units
+        // 'inches' in this case
+        pdf.fromHTML(
+                source, // HTML string or DOM elem ref.
+                margins.left, // x coord
+                margins.top, {// y coord
+                    'width': margins.width, // max width of content on PDF
+                    'elementHandlers': specialElementHandlers
+                },
+        function (dispose) {
+            // dispose: object with X, Y of the last line add to the PDF 
+            //          this allow the insertion of new lines after html
+            pdf.save('historico_retiradas.pdf');
+        }, margins);
+    });
+
 });
 
  

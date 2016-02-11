@@ -11,15 +11,17 @@
             $scope.cpf = null;
             $scope.exibirC = false;
             $scope.mensagem = true;
-    
-            $scope.$watch('cpf', function () {
-               
+            
+            $scope.validarCpf = function(){
+                
                 if ($scope.cpf) {
                      $scope.mensagem = false;
                    $scope.exibirC = !valida($scope.cpf);
                    
                  }
-            });
+            };
+    
+             
 
         }]
             );

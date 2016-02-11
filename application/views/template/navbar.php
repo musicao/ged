@@ -15,26 +15,11 @@
 
         <li class='  has-sub'><a href='#'><span class="glyphicon glyphicon-signal"></span> Relatório</a>
             <ul>
-                <li><a href='#'>Estoque</a></li>
-                <li><a href='#'>Retiradas</a></li>
+                <li><a href='<?= base_url('estoque/demonstrativo'); ?>'>Estoque</a></li>
+                <li><a href='<?= base_url('estoque/pesquisa'); ?>'>Retiradas por Períodos</a></li>
             </ul>
         </li>
-        <!--   <li class='active has-sub'><a href='#'>Cadastrar</a>
-              <ul>
-                 <li class='has-sub'><a href='#'>Produtos</a>
-                    <ul>
-                       <li><a href='#'>Sub Product</a></li>
-                       <li><a href='#'>Sub Product</a></li>
-                    </ul>
-                 </li>
-                 <li class='has-sub'><a href='#'>Product 2</a>
-                    <ul>
-                       <li><a href='#'>Sub Product</a></li>
-                       <li><a href='#'>Sub Product</a></li>
-                    </ul>
-                 </li>
-              </ul>
-           </li>-->
+        
         
         <li></li>
         <li></li>

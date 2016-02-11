@@ -189,7 +189,7 @@ class Usuario extends CI_Controller {
     public function historico($id) {
 
         $query = $this->usuario->historico($id);
-        $dados = $this->formataDadosHistorico($query);
+        $dados = $this->usuario->formataDadosHistorico($query);
 
         $row = $query->row();
         $this->load->model('usuario_model', 'usuario');
@@ -203,27 +203,7 @@ class Usuario extends CI_Controller {
         $this->load->view('template/footer.php');
     }
 
-    public function formataDadosHistorico($query) {
-        $this->load->model('produto_model', 'produto');
-        $this->load->model('voluntario_model', 'voluntario');
-
-        $dados = array();
-        foreach ($query->result() as $row) {
-            
-            $data = new DateTime($row->data_saida);
-            array_push($dados, array(
-                "nomeProduto" => strtoupper($this->produto->obterNome($row->id_produto)),
-                "quantidade" => $row->qtde,
-                "obs" => $row->observacao,
-                "nomeVoluntario" => strtoupper($this->voluntario->obterNome($row->id_voluntario_cadastro)),
-                "data" => $data->format("d/m/Y")
-                    )
-            );
-        }
-        
-        return $dados;
-    }
-
+    
     public function buscaUsuarioPorCpf() {
         $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
         $query = $this->usuario->burcarIdPorCpf($cpf);

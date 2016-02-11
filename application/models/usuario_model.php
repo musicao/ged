@@ -198,4 +198,27 @@ class Usuario_model extends CI_Model {
     public function historico($id) {
          return $this->db->query("SELECT * FROM  saida_produto where id_usuario='$id' ORDER BY data_saida DESC");
     }
+    
+    public function formataDadosHistorico($query) {
+        $this->load->model('produto_model', 'produto');
+        $this->load->model('voluntario_model', 'voluntario');
+
+        $dados = array();
+        foreach ($query->result() as $row) {
+            
+            $data = new DateTime($row->data_saida);
+            array_push($dados, array(
+                "nomeProduto" => strtoupper($this->produto->obterNome($row->id_produto)),
+                "quantidade" => $row->qtde,
+                "obs" => $row->observacao,
+                "nomeVoluntario" => strtoupper($this->voluntario->obterNome($row->id_voluntario_cadastro)),
+                "data" => $data->format("d/m/Y"),
+                "nomeUsuario" => $this->obterNome($row->id_usuario)
+                    )
+            );
+        }
+        
+        return $dados;
+    }
+
 }

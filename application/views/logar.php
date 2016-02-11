@@ -14,7 +14,7 @@
                     <img src="<?= base_url('assets/img/logotipo.png') ?>" class="img-responsive" alt="" width="120" height="120" />
                     <h3 class="form-signin-heading form-text"><strong>GED</strong></h3>
                     <h4 class="form-signin-heading form-text"><strong> Gestão de Estoque e Distribuição</strong></h4>
-                    <input type="text" name="cpf" ng-model="cpf" id="cpf" placeholder="CPF" required class="form-control input-lg" />
+                    <input type="text" name="cpf" ng-model="cpf" id="cpf" placeholder="CPF" ng-blur="validarCpf()" required class="form-control input-lg" />
                     <span class="text-warning" ng-show="exibirC">CPF Inválido</span>
                     <input type="password" class="form-control input-lg" name="password" id="password" placeholder="Senha" required=""  />
                     <br>

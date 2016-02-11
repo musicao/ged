@@ -131,5 +131,14 @@ class Estoque_model extends CI_Model {
          $row = $query->row();
          return $row->qtde;
     }
+    
+    public function listar() {
+         return $this->db->query("SELECT * FROM  v_estoque ORDER BY nome ASC");
+         
+    }
+    
+     public function historicoRetiradas($condicao) {
+         return $this->db->query("SELECT * FROM  saida_produto where 1=1  $condicao ORDER BY data_saida DESC");
+    }
 
 }

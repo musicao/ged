@@ -20,9 +20,9 @@
             <table id="tab_customers" class="table table-striped">
                 <colgroup>
                     <col width="20%">
-                    <col width="5%">
                     <col width="20%">
-                    <col width="5%">
+                    <col width="20%">
+                    <col width="20%">
                     <col width="20%">
                 </colgroup>
                 <thead>

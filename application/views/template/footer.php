@@ -7,7 +7,10 @@
 
   
 <script src="<?= base_url('assets/js/jquery.inputmask.js') ?>" type="text/javascript"></script>
- 
+<script src="<?= base_url('assets/js/moment.js') ?> " type="text/javascript"></script>
+
+<script src="<?= base_url('assets/js/bootstrap-datetimepicker.js') ?> " type="text/javascript"></script>
+
 <script src="<?= base_url('assets/js/scriptmenu.js') ?>" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/ui-bootstrap-tpls-0.10.0.min.js') ?>" type="text/javascript"></script>
 <script src="<?= base_url('assets/js/CPF.js') ?>" type="text/javascript"></script>
