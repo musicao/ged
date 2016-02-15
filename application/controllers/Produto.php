@@ -79,7 +79,7 @@ class Produto extends CI_Controller {
             $nome = $this->input->post('nomeProduto');
             $minimo = $this->input->post('minimo');
             $maximo = $this->input->post('maximo');
-            $obs = htmlentities($this->input->post('obs'), ENT_QUOTES);
+            $obs = $this->input->post('obs');
 
 
             $retorno = $this->produto->inserir($nome, $minimo, $maximo, $obs);
@@ -137,7 +137,7 @@ class Produto extends CI_Controller {
             $nome = $this->input->post('nomeProduto');
             $minimo = $this->input->post('minimo');
             $maximo = $this->input->post('maximo');
-            $obs = htmlentities($this->input->post('obs'), ENT_QUOTES);
+            $obs = $this->input->post('obs');
 
 
             $retorno = $this->produto->atualizar($nome, $minimo, $maximo, $obs,$id);
