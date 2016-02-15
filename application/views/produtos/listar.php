@@ -59,7 +59,7 @@
                         <thead>
                             <tr>
                                 <th>Nome <a ng-click="sort_by('nome');"> <i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th class="hidden-xs"> Descricao<a ng-click="sort_by('descricao');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                <th class="hidden-xs"> Descrição<a ng-click="sort_by('descricao');"> <i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th class="hidden-xs"> Estoque Mínimo<a ng-click="sort_by('minimo');"> <i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th class="hidden-xs"> Estoque Máximo<a ng-click="sort_by('maximo');"> <i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th>Ações</th>
