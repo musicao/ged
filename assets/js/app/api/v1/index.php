@@ -16,7 +16,7 @@ $db = new dbHelper();
 
 $app->get('/produtos', function() {
     global $db;
-    $rows = $db->select("produtos", "id,status, nome, estoque_minimo as minimo, estoque_maximo as maximo, descricao", array('status' => 'A'), "ORDER BY nome ASC");
+    $rows = $db->select("produto", "id,status, nome, estoque_minimo as minimo, estoque_maximo as maximo, descricao", array('status' => 'A'), "ORDER BY nome ASC");
 
 
     // parent categories node

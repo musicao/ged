@@ -10390,35 +10390,45 @@ INSERT INTO `voluntario_senhas` (`id`, `id_voluntario`, `senha`, `salt`, `status
 
 -- --------------------------------------------------------
 
---
--- Estrutura stand-in para view `v_estoque`
---
-CREATE TABLE IF NOT EXISTS `v_estoque` (
-`id` int(1)
-,`nome` int(1)
-,`qtde` int(1)
-,`minimo` int(1)
-,`maximo` int(1)
-);
+CREATE 
+     
+VIEW `v_estoque` AS
+    SELECT 
+        `e`.`id_produto` AS `id`,
+        `p`.`nome` AS `nome`,
+        `e`.`qtde` AS `qtde`,
+        `p`.`estoque_minimo` AS `minimo`,
+        `p`.`estoque_maximo` AS `maximo`
+    FROM
+        (`estoque` `e`
+        JOIN `produto` `p` ON ((`e`.`id_produto` = `p`.`id`)))
+    WHERE
+        ((`p`.`status` = 'A')
+            AND (`e`.`qtde` > 0));
 -- --------------------------------------------------------
 
---
--- Estrutura stand-in para view `v_usuarios`
---
-CREATE TABLE IF NOT EXISTS `v_usuarios` (
-`id` int(1)
-,`nome` int(1)
-,`telefone` int(1)
-,`cod_cidades` int(1)
-,`cpf` int(1)
-,`data_cadastro` int(1)
-,`id_voluntario_cadastro` int(1)
-,`status` int(1)
-,`nomeCidade` int(1)
-,`idEstados` int(1)
-,`sigla` int(1)
-,`nomeEstado` int(1)
-);
+ CREATE 
+    
+VIEW `v_usuarios` AS
+    SELECT 
+        `u`.`id` AS `id`,
+        `u`.`nome` AS `nome`,
+        `u`.`telefone` AS `telefone`,
+        `u`.`cod_cidades` AS `cod_cidades`,
+        `u`.`cpf` AS `cpf`,
+        `u`.`data_cadastro` AS `data_cadastro`,
+        `u`.`id_voluntario_cadastro` AS `id_voluntario_cadastro`,
+        `u`.`status` AS `status`,
+        `c`.`nome` AS `nomeCidade`,
+        `e`.`cod_estados` AS `idEstados`,
+        `e`.`sigla` AS `sigla`,
+        `e`.`nome` AS `nomeEstado`
+    FROM
+        ((`usuarios` `u`
+        JOIN `cidades` `c` ON ((`c`.`cod_cidades` = `u`.`cod_cidades`)))
+        JOIN `estados` `e` ON ((`c`.`estados_cod_estados` = `e`.`cod_estados`)))
+    WHERE
+        (`u`.`status` = 'A');
 -- --------------------------------------------------------
 
 --
@@ -10437,23 +10447,9 @@ CREATE TABLE IF NOT EXISTS `v_voluntarios` (
 ,`descricao` varchar(45)
 );
 -- --------------------------------------------------------
-
---
--- Estrutura para view `v_estoque`
---
-DROP TABLE IF EXISTS `v_estoque`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`olive302`@`localhost` SQL SECURITY DEFINER VIEW `v_estoque` AS select 1 AS `id`,1 AS `nome`,1 AS `qtde`,1 AS `minimo`,1 AS `maximo`;
-
+ 
 -- --------------------------------------------------------
-
---
--- Estrutura para view `v_usuarios`
---
-DROP TABLE IF EXISTS `v_usuarios`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`olive302`@`localhost` SQL SECURITY DEFINER VIEW `v_usuarios` AS select 1 AS `id`,1 AS `nome`,1 AS `telefone`,1 AS `cod_cidades`,1 AS `cpf`,1 AS `data_cadastro`,1 AS `id_voluntario_cadastro`,1 AS `status`,1 AS `nomeCidade`,1 AS `idEstados`,1 AS `sigla`,1 AS `nomeEstado`;
-
+ 
 -- --------------------------------------------------------
 
 --
