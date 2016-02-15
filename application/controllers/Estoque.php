@@ -96,8 +96,13 @@ class Estoque extends CI_Controller {
             $this->load->view('template/header.php');
             $this->load->view('template/navbar.php');
             $this->load->view('template/principal.php');
-            $this->load->view('estoques/retirada.php');
-            $this->load->view('template/footer.php');
+
+             $this->load->model('produto_model', 'produtos');
+            $produtos = $this->produtos->listagemDisponiveis();
+
+            $this->load->view('estoques/retirada.php', array('produtos' => $produtos));
+
+             $this->load->view('template/footer.php');
         } else {
 
             $idProduto = $this->input->post('selProduto');
