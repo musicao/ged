@@ -118,7 +118,11 @@ class Estoque extends CI_Controller {
                 $this->mensagens->defineMesagens($retorno);
                 redirect('sistema/inicio');
             } else {
-                $retorno = $this->estoque->inserirRetirada($idProduto, $quantidade, $obs, $idUsuario);
+                
+                $this->load->model('datas_model', 'data');
+                $data_hora = $this->data->obterDateTime();
+                
+                $retorno = $this->estoque->inserirRetirada($idProduto, $quantidade, $obs, $idUsuario,$data_hora);
                 $this->load->view('template/html.php');
                 $this->load->view('template/header.php');
                 $this->load->view('template/navbar.php');
@@ -129,11 +133,14 @@ class Estoque extends CI_Controller {
 
                 $nomeProduto = $this->produto->obterNome($idProduto);
                 $nomeUsuario = $this->usuario->obterNome($idUsuario);
-
+                
+                $dataImpressao = date_create($data_hora);
+                  
                 $this->mensagens->defineMesagens(15);
                 $this->load->view('estoques/comprovante.php', array("nomeUsuario" => $nomeUsuario,
                     "nomeProduto" => $nomeProduto,
                     "quantidade" => $quantidade,
+                    "data_hora" => date_format($dataImpressao, 'Y-m-d h:i:s'),
                     "obs" => $obs)
                 );
                 $this->load->view('template/footer.php');

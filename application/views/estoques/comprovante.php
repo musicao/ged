@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="form-group">
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
-                        <p><strong>Data:</strong> <?= date('d/m/Y h:m:s') ?></p>
+                        <p><strong>Data:</strong> <?= $data_hora ?></p>
                     </div>
                     <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 form-group">
                         <p><strong>Nome do Usuário:</strong> <?= strtoupper($nomeUsuario) ?>

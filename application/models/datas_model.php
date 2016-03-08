@@ -43,8 +43,8 @@ class Datas_model extends CI_Model {
 
 
         if (!empty($data1) && !empty($data2)) {
-            $dataInicial = DateTime::createFromFormat('d/m/Y', $data1)->format('Y-m-d');
-            $dataFinal = DateTime::createFromFormat('d/m/Y', $data2)->format('Y-m-d');
+            $dataInicial = DateTime::createFromFormat('d/m/Y', $data1)->format('Y-m-d 00:00:01');
+            $dataFinal = DateTime::createFromFormat('d/m/Y', $data2)->format('Y-m-d 23:59:59' );
 
             if ($this->calculaDiferencaDatas($dataInicial, $dataFinal)) {
                 $temp = $dataFinal;
@@ -55,6 +55,11 @@ class Datas_model extends CI_Model {
             return " and ( $campo >= '$dataInicial' AND $campo <= '$dataFinal' ) ";
         }
         return NULL;
+    }
+    
+    public  function obterDateTime() {
+         $tempo = new DateTime();
+         return  $tempo->format("Y-m-d H:i:s");
     }
 
      

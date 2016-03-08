@@ -10,6 +10,7 @@ class Produto_model extends CI_Model {
     public function __construct() {
         try {
             parent::__construct();
+            $this->load->model('datas_model', 'data');
         } catch (Exception $e) {
             $this->session->set_flashdata('erro', 'Erro acessar base de dados');
             log_message('debug', ' Erro ao cadastrar produto ' . $e);
@@ -23,7 +24,8 @@ class Produto_model extends CI_Model {
             "estoque_minimo" => $minimo,
             "estoque_maximo" => $maximo,
             "descricao" => $obs,
-            "id_voluntario_cadastro" => $this->session->userdata('id')
+            "id_voluntario_cadastro" => $this->session->userdata('id'),
+             "data_cadastro" => $this->data->obterDateTime()
         );
 
         $this->db->trans_start();
@@ -43,7 +45,8 @@ class Produto_model extends CI_Model {
 
             $dados = array(
                 'status' => 'I',
-                'id_voluntario_cadastro' => $this->session->userdata('id')
+                'id_voluntario_cadastro' => $this->session->userdata('id'),
+                 "data_cadastro" => $this->data->obterDateTime()
             );
 
             $this->db->trans_start();
@@ -84,7 +87,8 @@ class Produto_model extends CI_Model {
             "estoque_minimo" => $minimo,
             "estoque_maximo" => $maximo,
             "descricao" => $obs,
-            "id_voluntario_cadastro" => $this->session->userdata('id')
+            "id_voluntario_cadastro" => $this->session->userdata('id'),
+             "data_cadastro" => $this->data->obterDateTime()
         );
 
         if ($this->session->userdata('tipoVoluntario') != 1) {

@@ -10,6 +10,7 @@ class Usuario_model extends CI_Model {
     public function __construct() {
         try {
             parent::__construct();
+             $this->load->model('datas_model', 'data');
         } catch (Exception $e) {
             $this->session->set_flashdata('erro', 'Erro acessar base de dados');
             log_message('debug', ' Erro ao cadastrar voluntario ' . $e);
@@ -63,7 +64,8 @@ class Usuario_model extends CI_Model {
             "cpf" => $cpf,
             "cod_cidades" => $selCidade,
             "telefone" => $telefone,
-            "id_voluntario_cadastro" => $this->session->userdata('id')
+            "id_voluntario_cadastro" => $this->session->userdata('id'),
+            "data_cadastro" => $this->data->obterDateTime()
         );
 
         $this->db->trans_start();
@@ -212,7 +214,7 @@ class Usuario_model extends CI_Model {
                 "quantidade" => $row->qtde,
                 "obs" => $row->observacao,
                 "nomeVoluntario" => strtoupper($this->voluntario->obterNome($row->id_voluntario_cadastro)),
-                "data" => $data->format("d/m/Y"),
+                "data" => $data->format("d/m/Y h:i:s"),
                 "nomeUsuario" => $this->obterNome($row->id_usuario)
                     )
             );

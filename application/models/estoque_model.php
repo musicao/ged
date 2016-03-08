@@ -10,6 +10,7 @@ class Estoque_model extends CI_Model {
     public function __construct() {
         try {
             parent::__construct();
+              $this->load->model('datas_model', 'data');
         } catch (Exception $e) {
             $this->session->set_flashdata('erro', 'Erro acessar base de dados');
             log_message('debug', ' Erro ao instanciar estoque ' . $e);
@@ -24,7 +25,8 @@ class Estoque_model extends CI_Model {
             "qtde" => $quantidade,
             "id_ci_sessions" => $this->session->session_id,
             "observacao" => $obs,
-            "id_voluntario_cadastro" => $this->session->userdata('id')
+            "id_voluntario_cadastro" => $this->session->userdata('id'),
+            "data_entrada" => $this->data->obterDateTime()
         );
 
         $this->db->trans_start();
@@ -44,7 +46,8 @@ class Estoque_model extends CI_Model {
 
             $dados = array(
                 'status' => 'I',
-                'id_voluntario_cadastro' => $this->session->userdata('id')
+                'id_voluntario_cadastro' => $this->session->userdata('id'),
+                'data_cadastro' => $this->data->obterDateTime()
             );
 
             $this->db->trans_start();
@@ -79,7 +82,8 @@ class Estoque_model extends CI_Model {
             "estoque_minimo" => $minimo,
             "estoque_maximo" => $maximo,
             "descricao" => $obs,
-            "id_voluntario_cadastro" => $this->session->userdata('id')
+            "id_voluntario_cadastro" => $this->session->userdata('id'),
+            'data_cadastro' => $this->data->obterDateTime()
         );
 
         if ($this->session->userdata('tipoVoluntario') != 1) {
@@ -101,7 +105,7 @@ class Estoque_model extends CI_Model {
         return 6;
     }
     
-    public function inserirRetirada($idProduto,$quantidade,$obs,$idUsuario) {
+    public function inserirRetirada($idProduto,$quantidade,$obs,$idUsuario,$data) {
         
         
         
@@ -111,7 +115,9 @@ class Estoque_model extends CI_Model {
             "id_usuario" => $idUsuario,
             "id_ci_sessions" => $this->session->session_id,
             "observacao" => $obs,
-            "id_voluntario_cadastro" => $this->session->userdata('id')
+            "id_voluntario_cadastro" => $this->session->userdata('id'),
+            "data_saida" => $data,
+            "data_alteracao" => $data
         );
 
         $this->db->trans_start();

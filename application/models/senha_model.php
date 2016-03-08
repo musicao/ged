@@ -10,6 +10,7 @@ class Senha_model extends CI_Model {
     public function __construct() {
         try {
             parent::__construct();
+            $this->load->model('datas_model', 'data');
         } catch (Exception $e) {
             $this->session->set_flashdata('erro', 'Erro acessar base de dados');
             log_message('debug', ' Erro ao carregar model senha ' . $e);
@@ -33,7 +34,8 @@ class Senha_model extends CI_Model {
     public function desativarSenhas($id) {
         $dados = array(
             'status' => 'I',
-            'id_voluntario_alteracao' => $this->session->userdata('id')
+            'id_voluntario_alteracao' => $this->session->userdata('id'),
+            'data_alteracao' => $this->data->obterDateTime()
         );
 
         $this->db->where('id', $id);
@@ -54,7 +56,8 @@ class Senha_model extends CI_Model {
                 'id_voluntario' => $id,
                 'senha' => $senhaEncriptada,
                 'salt' => $salt,
-                'id_voluntario_alteracao' => $this->session->userdata("id")
+                'id_voluntario_alteracao' => $this->session->userdata("id"),
+                'data_alteracao' => $this->data->obterDateTime()
             );
 
             $this->db->trans_start();
