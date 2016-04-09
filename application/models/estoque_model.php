@@ -105,10 +105,8 @@ class Estoque_model extends CI_Model {
         return 6;
     }
     
-    public function inserirRetirada($idProduto,$quantidade,$obs,$idUsuario,$data) {
-        
-        
-        
+    public function inserirRetirada($idProduto,$quantidade,$obs,$idUsuario,$data,$tipoRetirada = 1) {
+
         $dados = array(
             "id_produto" => $idProduto,
             "qtde" => $quantidade,
@@ -117,18 +115,22 @@ class Estoque_model extends CI_Model {
             "observacao" => $obs,
             "id_voluntario_cadastro" => $this->session->userdata('id'),
             "data_saida" => $data,
-            "data_alteracao" => $data
+            "data_alteracao" => $data,
+            "tipo_retirada" =>$tipoRetirada
         );
 
         $this->db->trans_start();
+
         $this->db->insert('saida_produto', $dados);
+
         $this->db->trans_complete();
         if ($this->db->trans_status() === FALSE) {
             log_message('debug', "Erro ao cadastrar entrada_produtos $idProduto");
+
             return 4;
         }
 
-        return 5;
+        return 15;
     
     }
     
@@ -143,8 +145,8 @@ class Estoque_model extends CI_Model {
          
     }
     
-     public function historicoRetiradas($condicao) {
-         return $this->db->query("SELECT * FROM  saida_produto where 1=1  $condicao ORDER BY data_saida DESC");
+     public function historicoRetiradas($condicao,$tipoRetirada=1) {
+         return $this->db->query("SELECT * FROM  saida_produto where 1=1 and tipo_retirada = $tipoRetirada $condicao ORDER BY data_saida DESC");
     }
 
 }

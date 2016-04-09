@@ -60,6 +60,41 @@
                 $scope.listar = false;
             };
 
+            $scope.deletarEntradaEstoque = function (estoque) {
+
+                if (!confirm("Deseja excluir " + estoque.qtde + " unidade(s) de " + estoque.nome.toUpperCase())) {
+                    return;
+                }
+                $http({
+                    method: 'POST',
+                    url: window.location.origin + '/ged/estoque/deletar',
+                    data: "estoque=" + JSON.stringify(estoque),
+                    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                }).
+                success(function (data, status, headers, config) {
+                        console.log(data);
+                    if (data.error) {
+                        $scope.error = data.message;
+                    } else {
+
+                        for (var i = 0; i < $scope.list.length; i++) {
+
+                            if ($scope.list[i].id == data.id) {
+
+                                $scope.list.splice(i, 1);
+                            }
+                        }
+                        $scope.success = "Exclusão Efetuada";
+
+                    }
+
+
+                }).
+                error(function (data, status, headers, config) {
+
+                });
+            };
+
 
            
 

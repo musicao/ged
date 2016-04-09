@@ -11,7 +11,7 @@
         <div class="col-md-4">
             <section class="login-form">
                 <form method="post" action="<?= base_url('login/logar') ?> " role="login">
-                    <img src="<?= base_url('assets/img/logotipo.png') ?>" class="img-responsive" alt="" width="120" height="120" />
+                    <img src="<?= base_url('assets/img/logotipo.png') ?>" class="img-responsive" alt="" width="240" height="240" />
                     <h3 class="form-signin-heading form-text"><strong>GED</strong></h3>
                     <h4 class="form-signin-heading form-text"><strong> Gestão de Estoque e Distribuição</strong></h4>
                     <input type="text" name="cpf" ng-model="cpf" id="cpf" placeholder="CPF" ng-blur="validarCpf()" required class="form-control input-lg" />

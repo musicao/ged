@@ -136,7 +136,7 @@ class Estoque extends CI_Controller {
                 
                 $dataImpressao = date_create($data_hora);
                   
-                $this->mensagens->defineMesagens(15);
+                $this->mensagens->defineMesagens($retorno);
                 $this->load->view('estoques/comprovante.php', array("nomeUsuario" => $nomeUsuario,
                     "nomeProduto" => $nomeProduto,
                     "quantidade" => $quantidade,
@@ -208,4 +208,44 @@ class Estoque extends CI_Controller {
         }
     }
 
+    public function deletar() {
+
+        try {
+
+            if (!$this->session->userdata('tipoVoluntario') == 1) {
+                echo json_encode(array(
+                    'error' => true,
+                    'message' => "Ação não autorizada"
+                ), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+                die;
+            }
+
+            $valor = json_decode($this->input->post('estoque'));
+
+            $this->load->model('datas_model', 'data');
+
+            $data_hora = $this->data->obterDateTime();
+            //Colocar no campo antes da variavel $data_hora, o número do usuario desativado do sistema
+            //para os casos de remocao do item do estoqe por um adminitrador
+            $retorno = $this->estoque->inserirRetirada($valor->id, $valor->qtde, 'Excluído pelo Administrador(a) ' . strtoupper($this->session->userdata('nome')), 2,$data_hora,2);
+
+
+            if ($retorno) {
+                echo json_encode(array(
+                    'error' => false,
+                    'id' => $valor->id
+                ), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+
+                die;
+            } else {
+                throw new Exception("Erro ao deletar");
+            }
+        } catch (Exception $exc) {
+            echo json_encode(array(
+                'error' => true,
+                'message' => $exc->getMessage()
+            ), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT);
+            die;
+        }
+    }
 }

@@ -123,8 +123,43 @@ $app->get('/usuarios', function() {
 $app->get('/usuariocpf', function() {
     global $db;
     $rows = $db->select("v_usuarios", "*", array('cpf' =>$_GET['cpf']), "ORDER BY nome ASC");
-    $lista = array();
+    $dataFormatada   = "Não houve retirada anteriormente" ;
+    $qtde = 0;
+    $id = null;
+    $produto = "";
+    $flags = true;
+    $arrRetiradas = array();
+    foreach ($rows["data"] as $row) {
+        $id = $row["id"];
+    }
+    if($id){
+        $retirada = $db->select("v_retiradas", "*", array('id_usuario' => $id), "ORDER BY data_saida DESC");
 
+
+        foreach ($retirada["data"] as $row) {
+
+            if($flags){
+                $data = new DateTime($row["data_saida"]);
+                $dataFormatada = $data->format("d/m/Y h:i:s");
+                $qtde = $row["qtde"];
+                $produto = strtoupper($row["nome"]);
+                $flags = false;
+                array_push($arrRetiradas,array("data"=>$dataFormatada,"qtde"=>$qtde,"nome"=>$produto));
+            }else{
+                $data2 = new DateTime($row["data_saida"]);
+                $dataFormatada2 = $data2->format("d/m/Y h:i:s");
+                $qtde2 = $row["qtde"];
+                $produto2 = strtoupper($row["nome"]);
+                $flags = false;
+                array_push($arrRetiradas,array("data"=>$dataFormatada2,"qtde"=>$qtde2,"nome"=>$produto2));
+            }
+
+        }
+
+
+    }
+
+    $lista = array();
 
     foreach ($rows["data"] as $row) {
 
@@ -139,12 +174,17 @@ $app->get('/usuariocpf', function() {
         $usuario["nomeCidade"] = $row["nomeCidade"];
         $usuario["sigla"] = $row["sigla"];
         $usuario["nomeEstado"] = $row["nomeEstado"];
+        $usuario["dataRetirada"] = $dataFormatada;
+        $usuario["qtde"] = $qtde;
+        $usuario["nomeProduto"] = $produto;
+        $usuario["retiradas"] = $arrRetiradas;
 
 
 
 
         array_push($lista, $usuario);
     }
+
 
     echoResponse(200, $lista);
 });
