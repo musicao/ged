@@ -54,7 +54,7 @@ class Usuario_model extends CI_Model {
         }
     }
 
-    public function inserir($nome, $cpf, $selCidade,$telefone) {
+    public function inserir($nome, $cpf, $selCidade,$telefone,$nomeResponsavel) {
 
         if ($this->bolChecaCpfCadastrado($cpf, NULL)) {
             return 8;
@@ -65,7 +65,8 @@ class Usuario_model extends CI_Model {
             "cod_cidades" => $selCidade,
             "telefone" => $telefone,
             "id_voluntario_cadastro" => $this->session->userdata('id'),
-            "data_cadastro" => $this->data->obterDateTime()
+            "data_cadastro" => $this->data->obterDateTime(),
+            "responsavel" => $nomeResponsavel
         );
 
         $this->db->trans_start();
@@ -114,7 +115,7 @@ class Usuario_model extends CI_Model {
         return $this->db->query("SELECT *  FROM  v_usuarios where id=$id");
     }
 
-    public function atualizar($nome, $cpf, $selCidade,$telefone,$id) {
+    public function atualizar($nome, $cpf, $selCidade,$telefone,$id,$nomeResponsavel) {
 
         if ($this->bolChecaCpfCadastrado($cpf, NULL, $id)) {
             return 8;
@@ -124,7 +125,8 @@ class Usuario_model extends CI_Model {
             "cpf" => $cpf,
             "cod_cidades" => $selCidade,
             "telefone" => $telefone,
-            "id_voluntario_cadastro" => $this->session->userdata('id')
+            "id_voluntario_cadastro" => $this->session->userdata('id'),
+            "responsavel" => $nomeResponsavel
         );
 
         $this->db->trans_start();
@@ -215,7 +217,8 @@ class Usuario_model extends CI_Model {
                 "obs" => $row->observacao,
                 "nomeVoluntario" => strtoupper($this->voluntario->obterNome($row->id_voluntario_cadastro)),
                 "data" => $data->format("d/m/Y h:i:s"),
-                "nomeUsuario" => $this->obterNome($row->id_usuario)
+                "nomeUsuario" => $this->obterNome($row->id_usuario),
+                "responsavel" => strtoupper($row->nomeResponsavel)
                     )
             );
         }

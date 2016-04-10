@@ -17,9 +17,9 @@
                     <div class="row">
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
-                                <label for = "cpfRetirada">CPF do Usuário</label>
-                                <input id="cpfRetirada" name ="cpfRetirada"  class = "form-control" required type = "text" value = "<?= set_value('cpfRetirada') ?>">
-                                <?= form_error('cpfRetirada'); ?>
+                                <label for = "cpfcnpjRetirada">CPF/CNPJ do Usuário</label>
+                                <input id="cpfcnpjRetirada" name ="cpfcnpjRetirada"  class = "form-control" required type = "text" value = "<?= set_value('cpfcnpjRetirada') ?>">
+                                <?= form_error('cpfcnpjRetirada'); ?>
                             </div>
 
                         </div>

@@ -39,7 +39,7 @@ class Mensagens_model extends CI_Model {
                         break;
                     }
                 case 8: {
-                        $this->session->set_flashdata('erro', 'CPF já cadastrado');
+                        $this->session->set_flashdata('erro', 'CPF/CNPJ já cadastrado');
                         break;
                     }
                 case 9: {

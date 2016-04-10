@@ -33,9 +33,14 @@ class Usuario extends CI_Controller {
                 'rules' => 'trim|required|min_length[5]'
             ),
             array(
-                'field' => 'cpf',
-                'label' => 'cpf',
-                'rules' => 'required|validaCPF'
+                'field' => 'resposavel',
+                'label' => 'Nome do Resposável',
+                'rules' => 'trim|min_length[5]'
+            ),
+            array(
+                'field' => 'cpfcnpj',
+                'label' => 'CPF/CNPJ',
+                'rules' => 'required|validaCPFCNPJ'
             ),
             array(
                 'field' => 'selEstado',
@@ -73,11 +78,12 @@ class Usuario extends CI_Controller {
             $this->load->view('template/footer.php');
         } else {
 
+            $nomeResponsavel = $this->input->post('responsavel');
             $nome = $this->input->post('nome');
-            $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
+            $cpfcnpj = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpfcnpj'), ENT_QUOTES));
             $selCidade = $this->input->post('selCidade');
             $telefone = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('telefone'), ENT_QUOTES));
-            $retorno = $this->usuario->inserir($nome, $cpf, $selCidade, $telefone);
+            $retorno = $this->usuario->inserir($nome, $cpfcnpj, $selCidade, $telefone,$nomeResponsavel);
             $this->load->model('mensagens_model', 'mensagens');
             $this->mensagens->defineMesagens($retorno);
 
@@ -94,9 +100,14 @@ class Usuario extends CI_Controller {
                 'rules' => 'trim|required|min_length[5]'
             ),
             array(
-                'field' => 'cpf',
-                'label' => 'cpf',
-                'rules' => 'required|validaCPF'
+                'field' => 'resposavel',
+                'label' => 'Nome do Resposável',
+                'rules' => 'trim|min_length[5]'
+            ),
+            array(
+                'field' => 'cpfcnpj',
+                'label' => 'CPF/CNPJ',
+                'rules' => 'required|validaCPFCNPJ'
             ),
             array(
                 'field' => 'selEstado',
@@ -130,12 +141,12 @@ class Usuario extends CI_Controller {
             $this->load->view('template/footer.php');
         } else {
 
-
+            $nomeResponsavel = $this->input->post('responsavel');
             $nome = $this->input->post('nome');
             $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
             $selCidade = $this->input->post('selCidade');
             $telefone = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('telefone'), ENT_QUOTES));
-            $retorno = $this->usuario->atualizar($nome, $cpf, $selCidade, $telefone, $id);
+            $retorno = $this->usuario->atualizar($nome, $cpf, $selCidade, $telefone, $id,$nomeResponsavel);
             $this->load->model('mensagens_model', 'mensagens');
             $this->mensagens->defineMesagens($retorno);
 

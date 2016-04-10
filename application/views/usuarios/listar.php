@@ -53,10 +53,11 @@
                         <thead>
                             <tr>
                                 <th>Nome <a ng-click="sort_by('nome');"> <i class="glyphicon glyphicon-sort"></i></a></th>
-                                <th class="hidden-xs"> CPF<a ng-click="sort_by('cpf');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                <th class="hidden-xs"> CPF/CNPJ<a ng-click="sort_by('cpf');"> <i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th class="hidden-xs"> Telefone<a ng-click="sort_by('telefone');"> <i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th class="hidden-xs"> Cidade<a ng-click="sort_by('nomeCidade');"> <i class="glyphicon glyphicon-sort"></i></a></th>
                                 <th class="hidden-xs"> Estado<a ng-click="sort_by('sigla');"> <i class="glyphicon glyphicon-sort"></i></a></th>
+                                <th class="hidden-xs"> Resposável<a ng-click="sort_by('responsavel');"> <i class="glyphicon glyphicon-sort"></i></a></th>
 
                                 <th>Ações</th>
                             </tr>
@@ -78,6 +79,7 @@
                                 <td class="hidden-xs">{{usuario.telefone}}</td>
                                 <td class="hidden-xs">{{usuario.nomeCidade.toUpperCase()}}</td>
                                 <td class="hidden-xs">{{usuario.sigla.toUpperCase()}}</td>
+                                <td class="hidden-xs">{{usuario.responsavel.toUpperCase()}}</td>
 
                                 <td>
                                     <a href="<?= base_url('usuario/editar') ?>/{{usuario.id}}" class="tooltipUsuario" data-toggle="tooltip" data-placement="top" data-original-title="Editar"><img class="imagemIcons" src="<?= base_url('assets/img/document_edit.png') ?>"</a>

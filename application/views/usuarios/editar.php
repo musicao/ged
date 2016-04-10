@@ -9,6 +9,20 @@
                 <div class="alert alert-danger text-center" role="alert" ><?= $this->session->flashdata('erro'); ?></div>
             <?php endif;
             ?>
+
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
+
+                    <label for = "cpfcnpj">CPF/CNPJ</label>
+                    <input id="cpfcnpj" name ="cpfcnpj"   class = "form-control" required type = "text" value = "<?=  $usuario->cpf  ?>">
+                    <?= form_error('cpfcnpj'); ?>
+
+                </div>
+
+            </div>
+
+
             <div class="row">
                 <div class="form-group">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
@@ -17,15 +31,16 @@
                         <?= form_error('nome');
                         ?>
                     </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
+                        <label for = "responsavel">Nome do Responsável </label><small>   (opcional)</small>
+                        <input id = "responsavel" name = "responsavel" class = "form-control "  required type = "text" value = "<?= $usuario->responsavel ?>">
+                        <?= form_error('responsavel');
+                        ?>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="form-group">
-                    <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
-                        <label for = "cpf">CPF</label>
-                        <input id="cpf" name ="cpf"   class = "form-control" required type = "text" value = "<?= $usuario->cpf ?>">
-                        <?= form_error('cpf'); ?>
-                    </div>
 
                     <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
                         <label for = "telefone">Telefone</label>

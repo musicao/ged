@@ -99,18 +99,25 @@ $app->get('/usuarios', function() {
 
     foreach ($rows["data"] as $row) {
 
+        if(strlen($row["cpf"]) <= 11 ) {
+            $num = Mask("###.###.###-##", $row["cpf"]);
+        }else{
+            $num = Mask("##.###.###/####-##", $row["cpf"]);
+
+        }
+
         $usuario = array(); // temp array
         $usuario["id"] = $row["id"];
         $usuario["nome"] = $row["nome"];
         $usuario["telefone"] = Telefone($row["telefone"]);
         $usuario["cidade"] = $row["cod_cidades"];
-        $usuario["cpf"] = Mask("###.###.###-##", $row["cpf"]);
+        $usuario["cpf"] = $num;
         $usuario["idCadastro"] = $row["id_voluntario_cadastro"];
         $usuario["status"] = $row["status"];
         $usuario["nomeCidade"] = $row["nomeCidade"];
         $usuario["sigla"] = $row["sigla"];
         $usuario["nomeEstado"] = $row["nomeEstado"];
-
+        $usuario["responsavel"] = strtoupper($row["responsavel"]);
 
 
 
@@ -163,12 +170,19 @@ $app->get('/usuariocpf', function() {
 
     foreach ($rows["data"] as $row) {
 
+        if(strlen($row["cpf"]) <= 11 ) {
+            $num = Mask("###.###.###-##", $row["cpf"]);
+        }else{
+            $num = Mask("##.###.###/####-##", $row["cpf"]);
+
+        }
+
         $usuario = array(); // temp array
         $usuario["id"] = $row["id"];
         $usuario["nome"] = $row["nome"];
         $usuario["telefone"] = Telefone($row["telefone"]);
         $usuario["cidade"] = $row["cod_cidades"];
-        $usuario["cpf"] = Mask("###.###.###-##", $row["cpf"]);
+        $usuario["cpf"] = $num;
         $usuario["idCadastro"] = $row["id_voluntario_cadastro"];
         $usuario["status"] = $row["status"];
         $usuario["nomeCidade"] = $row["nomeCidade"];
@@ -178,6 +192,7 @@ $app->get('/usuariocpf', function() {
         $usuario["qtde"] = $qtde;
         $usuario["nomeProduto"] = $produto;
         $usuario["retiradas"] = $arrRetiradas;
+        $usuario["responsavel"] = strtoupper($row["responsavel"]);
 
 
 

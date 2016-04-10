@@ -1,4 +1,4 @@
-(function (angular) {
+    (function (angular) {
     "use strict";
     //Controlador Padrao
     var app = angular.module('usuarioController', ['ui.bootstrap']);
@@ -61,23 +61,6 @@
                 $scope.listar = false;
             };
 
-//
-//            $scope.listarcity = function ( ) {
-//                var num = $scope.selEstado;
-//                var serviceBase = window.location.origin + '/ged/assets/js/app/api/v1';
-//                $http.get(serviceBase + '/cidades?estado=' + num)
-//                        .then(function (results) {
-//                            $('#selCidade').empty();
-//
-//                            for (var prop in results.data) {
-//                                $('#selCidade').append(
-//                                        $('<option></option>').val(results.data[prop].id).html(results.data[prop].nome));
-//                            }
-//
-//                        });
-//
-//
-//            };
 
 
 

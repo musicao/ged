@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#cpf, #cpfRetirada').inputmask("999.999.999-99");
+    $('#cpf').inputmask("999.999.999-99");
     $(function () {
         $('#peridoInicial,#peridoFinal').inputmask("99/99/9999");
     });
@@ -7,6 +7,20 @@ $(document).ready(function () {
         $('.datas').datetimepicker({
             pickTime: false
         });
+    });
+
+    $("#cpfcnpj").keydown(function(){
+        try {
+            $("#cpfcnpj").unmask();
+        } catch (e) {}
+
+        var tamanho = $("#cpfcnpj").val().length;
+
+        if(tamanho < 11){
+            $("#cpfcnpj").mask("999.999.999-99");
+        } else if(tamanho >= 11){
+            $("#cpfcnpj").mask("99.999.999/9999-99");
+        }
     });
 
     $('#peridoInicial,#peridoFinal').on('changeDate', function (ev) {
@@ -54,7 +68,7 @@ $(document).ready(function () {
 
 
     $(function () {
-        $('#cpfRetirada').on('blur', function () {
+        $('#cpfcnpjRetirada').on('blur', function () {
 
             var num = limpa(this.value);
             var serviceBase = window.location.origin + '/ged/assets/js/app/api/v1';
@@ -84,6 +98,7 @@ $(document).ready(function () {
                                     <strong>Nome: </strong>" + data[prop].nome + "<br>\n\
                                     <strong>Cidade/Estado: \n\
                                     </strong>  " + data[prop].nomeCidade + " - " + data[prop].sigla + "<br>\n\
+                                    </strong>Responsável:  " + data[prop].responsavel   + "<br>\n\
                                     <h3><strong> Histórico</strong>\
                                         <a\
                                         data-toggle='modal' data-target='#myModal'>\

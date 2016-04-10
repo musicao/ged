@@ -81,9 +81,9 @@ class Estoque extends CI_Controller {
                 'rules' => 'trim|required|greater_than[0]'
             ),
             array(
-                'field' => 'cpfRetirada',
-                'label' => 'CPF do Usuário',
-                'rules' => 'required|validaCPF'
+                'field' => 'cpfcnpjRetirada',
+                'label' => 'CPF/CNPJ do Usuário',
+                'rules' => 'required|validaCPFCNPJ'
             )
         );
 

@@ -7,6 +7,9 @@
 
   
 <script src="<?= base_url('assets/js/jquery.inputmask.js') ?>" type="text/javascript"></script>
+<script src="<?= base_url('assets/js/jquery.mask.min.js') ?>" type="text/javascript"></script>
+
+
 <script src="<?= base_url('assets/js/moment.js') ?> " type="text/javascript"></script>
 
 <script src="<?= base_url('assets/js/bootstrap-datetimepicker.js') ?> " type="text/javascript"></script>
