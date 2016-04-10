@@ -15,9 +15,8 @@
                 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
 
                     <label for = "cpfcnpj">CPF/CNPJ</label>
-                    <input id="cpfcnpj" name ="cpfcnpj"   class = "form-control" required type = "text" value = "<?=  $usuario->cpf  ?>">
+                    <input id="cpfcnpj" name ="cpfcnpj"  MAXLENGTH="18"  onkeypress="mascaraMutuario(this,cpfCnpj)" onblur="mascaraMutuario(this,cpfCnpj)" class = "form-control" required type = "text" value = "<?=  $usuario->cpf  ?>">
                     <?= form_error('cpfcnpj'); ?>
-
                 </div>
 
             </div>

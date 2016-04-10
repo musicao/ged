@@ -143,7 +143,7 @@ class Usuario extends CI_Controller {
 
             $nomeResponsavel = $this->input->post('responsavel');
             $nome = $this->input->post('nome');
-            $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpf'), ENT_QUOTES));
+            $cpf = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('cpfcnpj'), ENT_QUOTES));
             $selCidade = $this->input->post('selCidade');
             $telefone = preg_replace("/[^0-9]/", "", htmlentities($this->input->post('telefone'), ENT_QUOTES));
             $retorno = $this->usuario->atualizar($nome, $cpf, $selCidade, $telefone, $id,$nomeResponsavel);

@@ -217,8 +217,7 @@ class Usuario_model extends CI_Model {
                 "obs" => $row->observacao,
                 "nomeVoluntario" => strtoupper($this->voluntario->obterNome($row->id_voluntario_cadastro)),
                 "data" => $data->format("d/m/Y h:i:s"),
-                "nomeUsuario" => $this->obterNome($row->id_usuario),
-                "responsavel" => strtoupper($row->nomeResponsavel)
+                "nomeUsuario" => $this->obterNome($row->id_usuario)
                     )
             );
         }

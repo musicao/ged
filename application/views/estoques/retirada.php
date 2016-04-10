@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 form-group">
                                 <label for = "cpfcnpjRetirada">CPF/CNPJ do Usuário</label>
-                                <input id="cpfcnpjRetirada" name ="cpfcnpjRetirada"  class = "form-control" required type = "text" value = "<?= set_value('cpfcnpjRetirada') ?>">
+                                <input id="cpfcnpjRetirada" name ="cpfcnpjRetirada" MAXLENGTH="18"  onkeypress="mascaraMutuario(this,cpfCnpj)"  onblur="mascaraMutuario(this,cpfCnpj)" class = "form-control" required type = "text" value = "<?= set_value('cpfcnpjRetirada') ?>">
                                 <?= form_error('cpfcnpjRetirada'); ?>
                             </div>
 
