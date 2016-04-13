@@ -1,5 +1,5 @@
 <div class="container">
-    <form role="form" method="POST" action="<?= base_url('relatorio/relatorioMensal') ?>" >
+    <form role="form" method="POST" action="<?= base_url('relatorio/relatorioAnual') ?>">
         <fieldset>
 
             <legend>Filtro para Relatório</legend>
@@ -12,26 +12,7 @@
 
             <div class="row">
                 <div class="form-group">
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
-                        <label for="mes">Mês</label>
-                        <select class="form-control" id="selMes" name="selMes">
-                            <option value="01">Janeiro</option>
-                            <option value="02">Fevereiro</option>
-                            <option value="03">Março</option>
-                            <option value="04">Abril</option>
-                            <option value="05">Maio</option>
-                            <option value="06">Junho</option>
-                            <option value="07">Julho</option>
-                            <option value="08">Agosto</option>
-                            <option value="09">Setembro</option>
-                            <option value="10">Outubro</option>
-                            <option value="11">Novembro</option>
-                            <option value="12">Dezembro</option>
-                        </select>
-                            <?= form_error('mes'); ?>
-                    </div>
-
-                    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
+                     <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2 form-group">
                         <label for="ano">Ano(xxxx)</label>
                         <input id="ano" maxlength="4" name="ano" class="form-control" required type="text"
                                value="<?= date("Y") ?>">

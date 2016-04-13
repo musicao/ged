@@ -68,14 +68,79 @@ class Relatorio extends CI_Controller
             $cont = 0;
 
 
-            for ($dia=1; $dia <= 31;$dia++){
-                $dados[$mes][$dia] = $this->produtos->apuracaoDadosMes($ano,$this->input->post('selMes'),$dia,1,$produto);
+            for ($dia = 1; $dia <= 31; $dia++) {
+                $dados[$mes][$dia] = $this->produtos->apuracaoDadosMes($ano, $this->input->post('selMes'), $dia, 1, $produto);
                 $cont += $dados[$mes][$dia];
             }
 
-          $total[$mes] = $cont;
+            $total[$mes] = $cont;
 
-            $this->load->view('relatorio/historico_mensal.php', array("dados" => $dados,"nomeProduto"=>strtoupper($nomeProduto),"mes"=>$mes,"ano"=>$ano,"total"=>$total,"dia"=>$dia));
+            $this->load->view('relatorio/historico_mensal.php', array("dados" => $dados, "nomeProduto" => strtoupper($nomeProduto), "mes" => $mes, "ano" => $ano, "total" => $total, "dia" => $dia));
+            $this->load->view('template/footer.php');
+        }
+    }
+
+    public function relatorioAnual()
+    {
+
+
+        $config = array(
+            array(
+                'field' => 'ano',
+                'label' => 'ANO',
+                'rules' => 'trim|required|validarAno'
+            ),
+            array(
+                'field' => 'selProduto',
+                'label' => 'Nome do Produto',
+                'rules' => 'trim|required'
+            ),
+        );
+
+
+        $this->form_validation->set_rules($config);
+        $this->form_validation->set_error_delimiters('<div><p class="text-danger">', '</p></div>');
+
+        if ($this->form_validation->run() == false) {
+
+
+            $produtos = $this->produtos->listagemGeral();
+
+            $this->load->view('template/html.php');
+            $this->load->view('template/header.php');
+            $this->load->view('template/navbar.php');
+            $this->load->view('template/principal.php');
+            $this->load->view('relatorio/requisitos_anual.php', array('produtos' => $produtos));
+            $this->load->view('template/footer.php');
+        } else {
+            $this->load->view('template/html.php');
+            $this->load->view('template/header.php');
+            $this->load->view('template/navbar.php');
+            $this->load->view('template/principal.php');
+
+
+            $ano = $this->input->post('ano');
+            $produto = $this->input->post('selProduto');
+            $nomeProduto = $this->produtos->obterNome($produto);
+            $total = array();
+            $geral = 0;
+
+            for ($m = 1; $m <= 12; $m++) {
+                $cont = 0;
+                $mes = $this->data->nomeMes($m);
+                for ($dia = 1; $dia <= 31; $dia++) {
+                    $dados[$mes][$dia] = $this->produtos->apuracaoDadosMes($ano, $m, $dia, 1, $produto);
+                    $cont += $dados[$mes][$dia];
+                }
+
+                $total[$mes] = $cont;
+                $geral += $cont;
+            }
+
+            $mes = array("", "Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro");
+
+            $this->load->view('relatorio/historico_anual.php', array("dados" => $dados,
+                "nomeProduto" => strtoupper($nomeProduto), "mes" => $mes, "ano" => $ano, "total" => $total, "dia" => $dia,"geral"=>$geral));
             $this->load->view('template/footer.php');
         }
     }

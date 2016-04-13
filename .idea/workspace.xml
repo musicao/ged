@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0867219-9517-43be-a472-e9fc133ef11d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/controllers/Relatorio.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/relatorio/historico_mensal.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/relatorio/requisitos.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/relatorio/historico_anual.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/application/views/relatorio/requisitos_anual.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/language/portuguese-brazilian/form_validation_lang.php" afterPath="$PROJECT_DIR$/application/language/portuguese-brazilian/form_validation_lang.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/controllers/Relatorio.php" afterPath="$PROJECT_DIR$/application/controllers/Relatorio.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/relatorio/requisitos.php" afterPath="$PROJECT_DIR$/application/views/relatorio/requisitos.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/template/navbar.php" afterPath="$PROJECT_DIR$/application/views/template/navbar.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/diversos/bds/modificacao.sql" afterPath="$PROJECT_DIR$/assets/diversos/bds/modificacao.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/js/script.js" afterPath="$PROJECT_DIR$/assets/js/script.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/database/drivers/mysqli/mysqli_result.php" afterPath="$PROJECT_DIR$/system/database/drivers/mysqli/mysqli_result.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/system/libraries/Form_validation.php" afterPath="$PROJECT_DIR$/system/libraries/Form_validation.php" />
     </list>
     <ignored path="ged.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,74 +34,51 @@
       <file leaf-file-name="Relatorio.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/controllers/Relatorio.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.916666">
-              <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
+            <state vertical-scroll-proportion="-20.416666">
+              <caret line="142" column="137" selection-start-line="142" selection-start-column="137" selection-end-line="142" selection-end-column="137" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="requisitos.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/relatorio/requisitos.php">
+      <file leaf-file-name="historico_anual.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/relatorio/historico_anual.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.625">
-              <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
+            <state vertical-scroll-proportion="-12.5">
+              <caret line="20" column="87" selection-start-line="20" selection-start-column="87" selection-end-line="20" selection-end-column="87" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="script.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="historico_retiradas.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/views/estoques/historico_retiradas.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-15.0">
+              <caret line="38" column="58" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="58" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="script.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/js/script.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="325" column="59" selection-start-line="325" selection-start-column="59" selection-end-line="325" selection-end-column="59" />
+            <state vertical-scroll-proportion="0.5960265">
+              <caret line="390" column="19" selection-start-line="390" selection-start-column="19" selection-end-line="390" selection-end-column="19" />
               <folding>
-                <marker date="1460511633000" expanded="true" signature="2539:2615" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="2753:2817" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="3022:3283" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="3094:3278" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="3711:4125" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="3711:4690" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="3759:4076" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="3805:4026" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="4125:4677" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="4254:4587" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="5128:5408" placeholder="..." />
-                <marker date="1460511633000" expanded="true" signature="5750:6030" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="historico_mensal.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/application/views/relatorio/historico_mensal.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46551725">
-              <caret line="18" column="67" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
-              <folding>
-                <marker date="1460511644000" expanded="true" signature="639:963" placeholder="..." />
-                <marker date="1460511644000" expanded="true" signature="776:963" placeholder="..." />
-                <marker date="1460511644000" expanded="true" signature="803:908" placeholder="..." />
-                <marker date="1460511644000" expanded="true" signature="932:963" placeholder="..." />
-                <marker date="1460511644000" expanded="true" signature="1337:1460" placeholder="..." />
-                <marker date="1460511644000" expanded="true" signature="1337:1623" placeholder="..." />
-                <marker date="1460511644000" expanded="true" signature="1423:1460" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Estoque.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/controllers/Estoque.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.375">
-              <caret line="199" column="58" selection-start-line="199" selection-start-column="37" selection-end-line="199" selection-end-column="58" />
-              <folding>
-                <element signature="n#listar#0;n#Estoque#0;n#!!top" expanded="false" />
-                <element signature="n#demonstrativo#0;n#Estoque#0;n#!!top" expanded="false" />
-                <element signature="e#5994#6324#0#PHP" expanded="false" />
-                <element signature="n#deletar#0;n#Estoque#0;n#!!top" expanded="false" />
+                <marker date="1460515666000" expanded="true" signature="2539:2615" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="2753:2817" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="3022:3283" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="3094:3278" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="3711:4125" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="3711:4690" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="3759:4076" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="3805:4026" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="4125:4677" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="4254:4587" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="5128:5408" placeholder="..." />
+                <marker date="1460515666000" expanded="true" signature="5750:6030" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -139,16 +113,18 @@
         <option value="$PROJECT_DIR$/application/controllers/Usuario.php" />
         <option value="$PROJECT_DIR$/application/views/usuarios/inserir.php" />
         <option value="$PROJECT_DIR$/application/views/estoques/retirada.php" />
-        <option value="$PROJECT_DIR$/application/views/template/navbar.php" />
         <option value="$PROJECT_DIR$/system/libraries/Form_validation.php" />
         <option value="$PROJECT_DIR$/application/language/portuguese-brazilian/form_validation_lang.php" />
         <option value="$PROJECT_DIR$/system/database/drivers/mysqli/mysqli_result.php" />
         <option value="$PROJECT_DIR$/application/models/Produto_model.php" />
-        <option value="$PROJECT_DIR$/application/views/relatorio/requisitos.php" />
         <option value="$PROJECT_DIR$/application/models/Datas_model.php" />
-        <option value="$PROJECT_DIR$/application/controllers/Relatorio.php" />
-        <option value="$PROJECT_DIR$/assets/js/script.js" />
         <option value="$PROJECT_DIR$/application/views/relatorio/historico_mensal.php" />
+        <option value="$PROJECT_DIR$/application/views/template/navbar.php" />
+        <option value="$PROJECT_DIR$/application/views/relatorio/requisitos_anual.php" />
+        <option value="$PROJECT_DIR$/application/views/relatorio/requisitos.php" />
+        <option value="$PROJECT_DIR$/application/controllers/Relatorio.php" />
+        <option value="$PROJECT_DIR$/application/views/relatorio/historico_anual.php" />
+        <option value="$PROJECT_DIR$/assets/js/script.js" />
       </list>
     </option>
   </component>
@@ -936,12 +912,12 @@
       <updated>1460084613671</updated>
       <workItem from="1460084618671" duration="66000" />
       <workItem from="1460084702145" duration="31207000" />
-      <workItem from="1460421081809" duration="14236000" />
+      <workItem from="1460421081809" duration="17877000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45509000" />
+    <option name="totallyTimeSpent" value="49150000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="9" y="51" width="1346" height="701" extended-state="0" />
@@ -1014,18 +990,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding>
-            <marker date="1460511633000" expanded="true" signature="2539:2615" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="2753:2817" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3022:3283" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3094:3278" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3711:4125" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3711:4690" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3759:4076" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3805:4026" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="4125:4677" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="4254:4587" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="5128:5408" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="5750:6030" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="2539:2615" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="2753:2817" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3022:3283" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3094:3278" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3711:4125" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3711:4690" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3759:4076" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3805:4026" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="4125:4677" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="4254:4587" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="5128:5408" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="5750:6030" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1077,14 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.375">
           <caret line="36" column="17" selection-start-line="36" selection-start-column="17" selection-end-line="36" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/estoques/historico_retiradas.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10344828">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1223,14 +1191,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/template/navbar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.875">
-          <caret line="19" column="95" selection-start-line="19" selection-start-column="95" selection-end-line="19" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/voluntarios/inserir.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.375">
@@ -1357,46 +1317,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/relatorio/requisitos.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.625">
-          <caret line="25" column="44" selection-start-line="25" selection-start-column="44" selection-end-line="25" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/controllers/Relatorio.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.916666">
-          <caret line="75" column="31" selection-start-line="75" selection-start-column="31" selection-end-line="75" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/js/script.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="325" column="59" selection-start-line="325" selection-start-column="59" selection-end-line="325" selection-end-column="59" />
-          <folding>
-            <marker date="1460511633000" expanded="true" signature="2539:2615" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="2753:2817" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3022:3283" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3094:3278" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3711:4125" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3711:4690" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3759:4076" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="3805:4026" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="4125:4677" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="4254:4587" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="5128:5408" placeholder="..." />
-            <marker date="1460511633000" expanded="true" signature="5750:6030" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/relatorio/historico_mensal.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46551725">
+        <state vertical-scroll-proportion="-11.25">
           <caret line="18" column="67" selection-start-line="18" selection-start-column="67" selection-end-line="18" selection-end-column="67" />
           <folding>
             <marker date="1460511644000" expanded="true" signature="639:963" placeholder="..." />
@@ -1406,6 +1329,75 @@
             <marker date="1460511644000" expanded="true" signature="1337:1460" placeholder="..." />
             <marker date="1460511644000" expanded="true" signature="1337:1623" placeholder="..." />
             <marker date="1460511644000" expanded="true" signature="1423:1460" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/relatorio/requisitos.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.02586207">
+          <caret line="1" column="90" selection-start-line="1" selection-start-column="90" selection-end-line="1" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/template/navbar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.416667">
+          <caret line="19" column="99" selection-start-line="19" selection-start-column="99" selection-end-line="19" selection-end-column="99" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/relatorio/requisitos_anual.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="11.25">
+          <caret line="1" column="88" selection-start-line="1" selection-start-column="88" selection-end-line="1" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Relatorio.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.416666">
+          <caret line="142" column="137" selection-start-line="142" selection-start-column="137" selection-end-line="142" selection-end-column="137" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/relatorio/historico_anual.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5">
+          <caret line="20" column="87" selection-start-line="20" selection-start-column="87" selection-end-line="20" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/estoques/historico_retiradas.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-15.0">
+          <caret line="38" column="58" selection-start-line="38" selection-start-column="19" selection-end-line="38" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/js/script.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5960265">
+          <caret line="390" column="19" selection-start-line="390" selection-start-column="19" selection-end-line="390" selection-end-column="19" />
+          <folding>
+            <marker date="1460515666000" expanded="true" signature="2539:2615" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="2753:2817" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3022:3283" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3094:3278" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3711:4125" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3711:4690" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3759:4076" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="3805:4026" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="4125:4677" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="4254:4587" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="5128:5408" placeholder="..." />
+            <marker date="1460515666000" expanded="true" signature="5750:6030" placeholder="..." />
           </folding>
         </state>
       </provider>

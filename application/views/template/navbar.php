@@ -17,7 +17,8 @@
             <ul>
                 <li><a href='<?= base_url('estoque/demonstrativo'); ?>'>Estoque</a></li>
                 <li><a href='<?= base_url('estoque/pesquisa'); ?>'>Retiradas por Períodos</a></li>
-                <li><a href='<?= base_url('relatorio/relatorioMensal'); ?>'>Quantitativo Mensal</a></li>
+                <li><a href='<?= base_url('relatorio/relatorioMensal'); ?>'>Quantitativo Diário/Mês</a></li>
+                <li><a href='<?= base_url('relatorio/relatorioAnual'); ?>'>Quantitativo Anual</a></li>
 
 
             </ul>
