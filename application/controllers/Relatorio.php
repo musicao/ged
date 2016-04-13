@@ -144,4 +144,54 @@ class Relatorio extends CI_Controller
             $this->load->view('template/footer.php');
         }
     }
+
+
+    public function historicoEntidades() {
+
+
+        $config = array(
+            array(
+                'field' => 'peridoInicial',
+                'label' => 'Inicio',
+                'rules' => 'trim|valid_date'
+            ),
+            array(
+                'field' => 'peridoFinal',
+                'label' => 'Fim',
+                'rules' => 'trim|valid_date'
+            )
+        );
+
+
+        $this->form_validation->set_rules($config);
+        $this->form_validation->set_error_delimiters('<div><p class="text-danger">', '</p></div>');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/html.php');
+            $this->load->view('template/header.php');
+            $this->load->view('template/navbar.php');
+            $this->load->view('template/principal.php');
+            $this->load->view('relatorio/filtro_relatorio_entidades.php');
+            $this->load->view('template/footer.php');
+        } else {
+
+            $datas = array(
+                "peridoInicial" => $this->input->post('peridoInicial'),
+                "peridoFinal" => $this->input->post('peridoFinal')
+            );
+
+            $this->load->model('datas_model', 'datas');
+            $dataFiltro = $this->datas->preparaCondicaoDatas($datas['peridoInicial'], $datas['peridoFinal'], ' s.data_saida');
+            $query = $this->produtos->historicoRetiradasEntidades($dataFiltro);
+            $this->load->model('usuario_model', 'usuario');
+            $dados = $this->usuario->formataDadosHistoricoEntidades($query);
+
+            $this->load->view('template/html.php');
+            $this->load->view('template/header.php');
+            $this->load->view('template/navbar.php');
+            $this->load->view('template/principal.php');
+            $this->load->view('relatorio/historico_retiradas_entidades.php',array("historico" => $dados, "dataI"=>$datas['peridoInicial'],"dataF"=>$datas['peridoFinal']));
+            $this->load->view('template/footer.php');
+        }
+    }
 }

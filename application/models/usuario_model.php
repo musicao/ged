@@ -225,4 +225,34 @@ class Usuario_model extends CI_Model {
         return $dados;
     }
 
+
+    function Mask($mask, $str) {
+
+        $str = str_replace(" ", "", $str);
+
+        for ($i = 0; $i < strlen($str); $i++) {
+            $mask[strpos($mask, "#")] = $str[$i];
+        }
+
+        return $mask;
+    }
+
+
+    public function formataDadosHistoricoEntidades($query) {
+
+        $dados = array();
+        foreach ($query->result() as $row) {
+
+             array_push($dados, array(
+                    "nomeProduto" => strtoupper($row->produto),
+                    "quantidade" => $row->qtde,
+                    "nomeEntidade" => strtoupper($row->nome),
+                    "identificador" =>  $this->Mask("##.###.###/####-##", $row->identificador)
+                )
+            );
+        }
+
+        return $dados;
+    }
+
 }
