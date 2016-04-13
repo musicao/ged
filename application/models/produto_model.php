@@ -70,6 +70,10 @@ class Produto_model extends CI_Model {
         return $this->db->query("SELECT * FROM  produto where status = 'A' order by nome ASC");
     }
 
+    public function listagemGeral() {
+        return $this->db->query("SELECT * FROM  produto  order by nome ASC");
+    }
+
     public function listagemDisponiveis() {
         return $this->db->query("SELECT p.id as id , p.nome as nome from  produto as p inner join estoque as e on
                                 p.id = e.id_produto where p.status = 'A'  and e.qtde > 0 order by p.nome ASC;
@@ -115,5 +119,11 @@ class Produto_model extends CI_Model {
         $query =  $this->db->query("SELECT nome FROM  produto where id = $id");
         $row = $query->row();
         return $row->nome;
+    }
+
+    public function apuracaoDadosMes($ano,$mes,$dia,$retirada,$produto){
+
+       $query =  $this->db->query("select f_DadosRelatorio($ano,$mes,$dia,$retirada,$produto) as qtde;");
+        return $query->row()->qtde;
     }
 }

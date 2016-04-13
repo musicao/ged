@@ -1421,6 +1421,15 @@ class CI_Form_validation {
         }
     }
 
+    /**
+     * @param $str
+     * @return bool
+     */
+    function validarAno($str){
+        return is_numeric($str) && $str>1900;
+
+    }
+
     function validar_senha($str) {
 
         if (preg_match("/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).*$/", $str)) {

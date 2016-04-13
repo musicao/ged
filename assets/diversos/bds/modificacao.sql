@@ -8,6 +8,7 @@ ADD COLUMN `tipo_retirada` CHAR(1) NOT NULL DEFAULT '1' COMMENT '1 - normal\n2 -
 -- no controlador Estoque.php linha 230
 -- Colocar no campo antes da variavel $data_hora, o número do usuario desativado do sistema
 -- para os casos de remocao do item do estoqe por um adminitrador
+-- executar o arquivo function.sql na pasta bds
 
 
 USE `cedpv`;
@@ -44,4 +45,6 @@ VIEW `v_usuarios` AS
         JOIN `cidades` `c` ON ((`c`.`cod_cidades` = `u`.`cod_cidades`)))
         JOIN `estados` `e` ON ((`c`.`estados_cod_estados` = `e`.`cod_estados`)))
     WHERE
-        (`u`.`status` = 'A');
+        (`u`.`status` = 'A'); 
+        
+         -- rodar aquivo stp.sql para criar store procedure

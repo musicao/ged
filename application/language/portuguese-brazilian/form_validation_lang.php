@@ -46,5 +46,7 @@ $lang['estado'] = "Informe o Estado.";
 $lang['cidade'] = "Informe a Cidade.";
 $lang['valid_date'] = "O campo {field} não é uma data (dd/mm/yyyy) válida.";
 $lang['valid_hour'] = "O campo {field} não é uma hora (hh/mm) válida.";
+$lang['validarAno'] = "O campo {field} deve conter 4 dígitos.";
+
 
 
