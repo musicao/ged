@@ -227,7 +227,7 @@ class Estoque extends CI_Controller {
             $data_hora = $this->data->obterDateTime();
             //Colocar no campo antes da variavel $data_hora, o número do usuario desativado do sistema
             //para os casos de remocao do item do estoqe por um adminitrador
-            $retorno = $this->estoque->inserirRetirada($valor->id, $valor->qtde, 'Excluído pelo Administrador(a) ' . strtoupper($this->session->userdata('nome')), 2,$data_hora,2);
+                $retorno = $this->estoque->inserirRetirada($valor->id, $valor->qtde, 'Excluído pelo Administrador(a) ' . strtoupper($this->session->userdata('nome')),/* SUBSTITUIR ESSE VALOR PELO ID DO USUARIO*/ 2,$data_hora,2);
 
 
             if ($retorno) {
