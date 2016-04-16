@@ -150,15 +150,18 @@ $app->get('/usuariocpf', function() {
                 $dataFormatada = $data->format("d/m/Y h:i:s");
                 $qtde = $row["qtde"];
                 $produto = strtoupper($row["nome"]);
+
+                $tempo = $row["tempo"];
                 $flags = false;
-                array_push($arrRetiradas,array("data"=>$dataFormatada,"qtde"=>$qtde,"nome"=>$produto));
+                array_push($arrRetiradas,array("data"=>$dataFormatada,"qtde"=>$qtde,"nome"=>$produto,"tempo"=>$tempo));
             }else{
                 $data2 = new DateTime($row["data_saida"]);
                 $dataFormatada2 = $data2->format("d/m/Y h:i:s");
                 $qtde2 = $row["qtde"];
                 $produto2 = strtoupper($row["nome"]);
+                $tempo2 = $row["tempo"];
                 $flags = false;
-                array_push($arrRetiradas,array("data"=>$dataFormatada2,"qtde"=>$qtde2,"nome"=>$produto2));
+                array_push($arrRetiradas,array("data"=>$dataFormatada2,"qtde"=>$qtde2,"nome"=>$produto2,"tempo"=>$tempo2));
             }
 
         }
@@ -193,6 +196,7 @@ $app->get('/usuariocpf', function() {
         $usuario["nomeProduto"] = $produto;
         $usuario["retiradas"] = $arrRetiradas;
         $usuario["responsavel"] = strtoupper($row["responsavel"]);
+        $usuario["tempo"] = $tempo;
 
 
 

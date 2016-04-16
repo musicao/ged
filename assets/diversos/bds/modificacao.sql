@@ -15,7 +15,7 @@ ADD COLUMN `tipo_retirada` CHAR(1) NOT NULL DEFAULT '1' COMMENT '1 - normal\n2 -
 
 USE `cedpv`;
 CREATE  OR REPLACE VIEW `v_retiradas` AS
-SELECT p.nome, s.qtde, s.data_saida, s.id_usuario FROM  saida_produto as s inner join produto as p on
+SELECT p.nome, s.qtde, s.data_saida, s.id_usuario, ((TO_DAYS(NOW()) - TO_DAYS(`s`.`data_saida`)) - 1) AS `tempo` FROM  saida_produto as s inner join produto as p on
 s.id_produto = p.id;
 
 ALTER TABLE `cedpv`.`usuarios` 

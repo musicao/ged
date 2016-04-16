@@ -94,7 +94,8 @@ $(document).ready(function () {
                                         <img class='imagemIcons' src= '" + caminhoFigura + "'></a></h3>\
                                     <strong>Última Retirada em: </strong>  " + data[prop].dataRetirada + " <br>\
                                     <strong>Qtde: </strong>  " + data[prop].qtde + " unidade(s) <br>\
-                                    <strong>Produto: </strong>  " + data[prop].nomeProduto + " <br>");
+                                    <strong>Produto: </strong>  " + data[prop].nomeProduto + " <br>\
+                                    <strong>Há  </strong>  " + data[prop].tempo + " dia(s) <br>");
                                 var tabela = '' +
                                     '<table class="table">' +
                                     '<thead> ' +
@@ -102,6 +103,7 @@ $(document).ready(function () {
                                     '<th>Produto</th> ' +
                                     '<th>Data</th> ' +
                                     '<th>Quantidade</th> ' +
+                                    '<th>Dias</th> ' +
                                     '</tr> ' +
                                     '</thead> ' +
                                     '<tbody>';
@@ -112,6 +114,7 @@ $(document).ready(function () {
                                         '<td>' + data[prop].retiradas[dados].nome + '</td>' +
                                         '<td>' + data[prop].retiradas[dados].data + '</td>' +
                                         '<td>' + data[prop].retiradas[dados].qtde + '</td>' +
+                                        '<td>' + data[prop].retiradas[dados].tempo + '</td>' +
                                         '</tr>';
                                 }
 

@@ -77,7 +77,7 @@
 		//Remove tudo o que não é dígito
 
 		v = v.replace(/\D/g, "")
-        console.log(v.length);
+
         if (v.length < 14) { //CPF
 			//Coloca um ponto entre o terceiro e o quarto dígitos
 			v = v.replace(/(\d{3})(\d)/, "$1.$2")
