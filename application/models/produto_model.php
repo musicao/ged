@@ -132,8 +132,7 @@ class Produto_model extends CI_Model
 
     public function apuracaoDadosMes($ano, $mes, $dia, $retirada, $produto)
     {
-
-        $query = $this->db->query("select f_DadosRelatorio($ano,$mes,$dia,$retirada,$produto) as qtde;");
+         $query = $this->db->query("select f_DadosRelatorio($ano,$mes,$dia,$retirada,$produto) as qtde;");
         return $query->row()->qtde;
     }
 

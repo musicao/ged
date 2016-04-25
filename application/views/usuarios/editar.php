@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 form-group">
                         <label for = "responsavel">Nome do Responsável </label><small>   (opcional)</small>
-                        <input id = "responsavel" name = "responsavel" class = "form-control "  required type = "text" value = "<?= $usuario->responsavel ?>">
+                        <input id = "responsavel" name = "responsavel" class = "form-control "   type = "text" value = "<?= $usuario->responsavel ?>">
                         <?= form_error('responsavel');
                         ?>
                     </div>
