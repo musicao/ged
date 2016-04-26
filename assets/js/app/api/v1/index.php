@@ -131,7 +131,7 @@ $app->get('/usuariocpf', function() {
     global $db;
     $rows = $db->select("v_usuarios", "*", array('cpf' =>$_GET['cpf']), "ORDER BY nome ASC");
     $dataFormatada   = "Não houve retirada anteriormente" ;
-    $qtde = 0;
+    $qtde = $tempo= 0;
     $id = null;
     $produto = "";
     $flags = true;
