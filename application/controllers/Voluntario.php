@@ -50,7 +50,7 @@ class Voluntario extends CI_Controller {
             array(
                 'field' => 'cpf',
                 'label' => 'cpf',
-                'rules' => 'required|validaCPF'
+                'rules' => 'required|validaCPFCNPJ'
             ),
             array(
                 'field' => 'selPefil',
